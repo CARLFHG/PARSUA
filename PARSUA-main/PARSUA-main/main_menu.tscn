@@ -1,0 +1,104 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2qy52xdogxgv"]
+
+[ext_resource type="Script" uid="uid://cyb36m76e7eps" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="VideoStream" uid="uid://ux2fveck7ait" path="res://main menu bg/Pixel Animation - Ocean Wave Loop.ogv" id="2_fu7sn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtjmy"]
+bg_color = Color(0.10931852, 0.10931852, 0.10931852, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vrkn")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_fu7sn")
+autoplay = true
+expand = true
+loop = true
+
+[node name="MainButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 129.0
+offset_top = -210.0
+offset_right = 417.0
+offset_bottom = 243.0
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button" type="Button" parent="MainButtons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(16.638432, 16.638432, 16.638432, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_wtjmy")
+text = "START"
+
+[node name="Button2" type="Button" parent="MainButtons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(16.638432, 16.638432, 16.638432, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_wtjmy")
+text = "OPTION"
+
+[node name="exit" type="Button" parent="MainButtons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(16.638432, 16.638432, 16.638432, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_wtjmy")
+text = "EXIT
+"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 219.0
+offset_right = 2110.0
+offset_bottom = 656.0
+theme_override_font_sizes/font_size = 200
+text = "PARSUA"
+
+[node name="Options" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -541.0
+offset_top = -343.75
+offset_right = 541.0
+offset_bottom = 343.75
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="options" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 136.75
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "OPTIONS"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="MainButtons/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="MainButtons/exit" to="." method="_on_exit_pressed"]
