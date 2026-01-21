@@ -9,8 +9,7 @@ size = Vector2(129, 127)
 [node name="level1" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_3hls8")]
-position = Vector2(459, 607)
-script = null
+position = Vector2(449, 617)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(462, 756)
