@@ -27,4 +27,21 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_input_event(viewport,event,shape_idx):
-	pass
+	if can_drag:
+		if event is InputEventScreenTouch:
+			if event.pressed:
+				if active_drag_item != null  and active_drag_item != self:
+					return
+				active_drag_item = self
+				#start_position = global_position
+				is_dragging = true
+				drag_started.emit(self)
+				#create_shadow_obj()
+				z_index = 10
+				#size increase
+			else:
+				if is_dragging:
+					_end_drag()
+		elif event is InputEventScreenDrag and is_dragging: #these two lines for lower end devices
+			global_position = event.position + drag_offset
+								  
