@@ -1,0 +1,179 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkeph3lm33fjb"]
+
+[ext_resource type="Script" uid="uid://cyb36m76e7eps" path="res://main menu bg/main_menu.gd" id="1_sepwh"]
+[ext_resource type="VideoStream" uid="uid://ux2fveck7ait" path="res://main menu bg/Pixel Animation - Ocean Wave Loop.ogv" id="2_14wem"]
+[ext_resource type="Script" uid="uid://d2abhrobcx7ji" path="res://main menu bg/h_slider.gd" id="3_2atga"]
+[ext_resource type="Script" uid="uid://b1suxbrbt7q5y" path="res://main menu bg/check_button.gd" id="4_by01r"]
+[ext_resource type="AudioStream" uid="uid://dq5udpcyrf6p4" path="res://main menu bg/Pahina - Cup of Joe (Official Audio).mp3" id="5_dclss"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtjmy"]
+bg_color = Color(0.10931852, 0.10931852, 0.10931852, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_fu7sn"]
+thickness = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glbon"]
+bg_color = Color(0.44666582, 0.56580967, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlkkf"]
+bg_color = Color(0.44666582, 0.56580967, 1, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sepwh")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_14wem")
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
+
+[node name="MainButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 129.0
+offset_top = -210.0
+offset_right = 417.0
+offset_bottom = 243.0
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button" type="Button" parent="MainButtons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(16.638432, 16.638432, 16.638432, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_wtjmy")
+text = "START"
+
+[node name="Button2" type="Button" parent="MainButtons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(16.638432, 16.638432, 16.638432, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_wtjmy")
+text = "OPTION"
+
+[node name="exit" type="Button" parent="MainButtons"]
+layout_mode = 2
+theme_override_colors/font_color = Color(16.638432, 16.638432, 16.638432, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_wtjmy")
+text = "EXIT
+"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 219.0
+offset_right = 2110.0
+offset_bottom = 656.0
+theme_override_font_sizes/font_size = 200
+text = "PARSUA"
+
+[node name="Options" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -419.5
+offset_top = -270.875
+offset_right = 419.5
+offset_bottom = 270.875
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="options" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 136.75
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "OPTIONS"
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -268.0
+offset_right = 273.0
+offset_bottom = 294.0625
+grow_horizontal = 2
+theme_override_styles/slider = SubResource("StyleBoxLine_fu7sn")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_glbon")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_nlkkf")
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("3_2atga")
+audio_bus_name = "Musika"
+
+[node name="CheckButton" type="CheckButton" parent="Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.5
+offset_top = -33.375
+offset_right = 272.5
+offset_bottom = 33.375
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "FULLSCREEN"
+script = ExtResource("4_by01r")
+
+[node name="exit" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = 195.0
+offset_right = 85.0
+offset_bottom = 268.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(16.638432, 16.638432, 16.638432, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_wtjmy")
+text = "BACK	
+"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_dclss")
+autoplay = true
+bus = &"Musika"
+
+[connection signal="pressed" from="MainButtons/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="MainButtons/exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="Options/HSlider" to="Options/HSlider" method="_on_value_changed"]
+[connection signal="toggled" from="Options/CheckButton" to="Options/CheckButton" method="_on_toggled"]
+[connection signal="pressed" from="Options/exit" to="." method="_on_back_options_pressed"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dq5udpcyrf6p4"
+path="res://.godot/imported/Pahina - Cup of Joe (Official Audio).mp3-8b37d670c7b73a0edab54101fbf377e7.mp3str"
+
+[deps]
+
+source_file="res://main menu bg/Pahina - Cup of Joe (Official Audio).mp3"
+dest_files=["res://.godot/imported/Pahina - Cup of Joe (Official Audio).mp3-8b37d670c7b73a0edab54101fbf377e7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
