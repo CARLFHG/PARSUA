@@ -1,78 +1,63 @@
 extends Area2D
-class_name Draggableitem
 
-signal drag_started(item)
-signal drag_ended(item)
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var drag_shape: CollisionShape2D = $CollisionShape2D
 
-var is_dragging = false
-var drag_offset : Vector2 = Vector2.ZERO
-var start_position : Vector2
-var can_drag = true
+var is_dragging := false
+var drag_offset: Vector2
+var start_position: Vector2
 
-var shadow = null
+# scales
+var normal_scale := Vector2.ONE
+var drag_scale := Vector2(10, 10)
 
-@export var item_id = ""
-@export var texture = Texture
+# collision originals (stored once)
+var original_radius: float
+var original_rect_size: Vector2
 
-static var active_drag_item: Draggableitem = null #para hindi ma drag ung iba 
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	input_event.connect(_on_input_event)
+func _ready():
 	start_position = global_position
+	normal_scale = sprite.scale
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	if drag_shape.shape is CircleShape2D:
+		original_radius = drag_shape.shape.radius
+	elif drag_shape.shape is RectangleShape2D:
+		original_rect_size = drag_shape.shape.size
 
-func _on_input_event(viewport,event,shape_idx):
-	if can_drag:
-		if event is InputEventScreenTouch:
-			if event.pressed:
-				if active_drag_item != null  and active_drag_item != self:
-					return
-				active_drag_item = self
-				#start_position = global_position
-				is_dragging = true
-				drag_started.emit(self)
-				#create_shadow_obj()
-				z_index = 10
-				size_increase()
-			else:
-				if is_dragging:
-					_end_drag()
-		elif event is InputEventScreenDrag and is_dragging: #these two lines for lower end devices
-			global_position = event.position + drag_offset
-								  
+func _input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			_start_drag()
+		else:
+			_end_drag()
 
-func _end_drag(force_snap_back:= true):
-	is_dragging=false
-	active_drag_item = null 
-	drag_ended.emit(self)
-	z_index=0
-	size_decrease()
-	#shadow.queue_free()
-	#await get_tree().process_frame
-	#shadow = null
-	#if force_snap_back:
-		#var tween = create_tween()
-		#tween.tween_property(self, "global_position", start_position, 0.15)
-		
-func size_increase():
-	$Sprite2D.scale = Vector2(2,2)
-	var sprite_rect = $Sprite2D.get_rect()
-	var scaled_size = sprite_rect.size * $Sprite2D.scale
-	
-	#Calcula radius (half of the largest dimension + padding)
-	var radius = (max(scaled_size.x, scaled_size.y) * 0.5)
-		$DragDetector.shape.radius = radius
+func _process(_delta):
+	if is_dragging:
+		global_position = get_global_mouse_position() + drag_offset
 
-func size_decrease():
-	$Sprite2D.scale = Vector2(1,1)
-	var sprite_rect = $Sprite2D.get_rect()
-	var scaled_size = sprite_rect.size * $Sprite2D.scale
-	
-	#Calculate radius (half of the largest dimension + padding)
-	var radius = (max(scaled_size.x, scaled_size.y) * 0.5)
-	$DragDetector.shape.radius = radius
+func _start_drag():
+	is_dragging = true
+	drag_offset = global_position - get_global_mouse_position()
+
+	# scale sprite
+	sprite.scale = drag_scale
+
+	# scale collision
+	_apply_collision_scale(drag_scale)
+
+func _end_drag():
+	is_dragging = false
+
+	sprite.scale = normal_scale
+	_apply_collision_scale(normal_scale)
+
+	_return_to_start()
+
+func _return_to_start():
+	global_position = start_position
+
+func _apply_collision_scale(target_scale: Vector2):
+	if drag_shape.shape is CircleShape2D:
+		drag_shape.shape.radius = original_radius * target_scale.x
+	elif drag_shape.shape is RectangleShape2D:
+		drag_shape.shape.size = original_rect_size * target_scale
