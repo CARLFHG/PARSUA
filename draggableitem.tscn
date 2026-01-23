@@ -1,20 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://dfelrk61lbgbo"]
 
 [ext_resource type="Script" uid="uid://c611wfce3y1ek" path="res://area_2d.gd" id="1_0ug4l"]
+[ext_resource type="Texture2D" uid="uid://bab434aksyuqe" path="res://images/asssets/Jump (32x32).png" id="2_0ug4l"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6kncx"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_053t2"]
-load_path = "res://.godot/imported/DAY - CRAB ATTACK 1.png-c01c298e8c10317aa2d206510ac7c3cc.ctex"
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ug4l"]
+radius = 16.27882
 
 [node name="Area2D" type="Area2D"]
 script = ExtResource("1_0ug4l")
-item_id = null
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_6kncx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(546.5, 470.5)
-scale = Vector2(7.59375, 5.71875)
-texture = SubResource("CompressedTexture2D_053t2")
+position = Vector2(430, 188)
+texture = ExtResource("2_0ug4l")
+
+[node name="DragDetector" type="CollisionShape2D" parent="."]
+position = Vector2(430, 190)
+shape = SubResource("CircleShape2D_0ug4l")
