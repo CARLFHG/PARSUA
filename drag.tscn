@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://btuf2ursjnnfm"]
+
+[ext_resource type="Script" uid="uid://c611wfce3y1ek" path="res://area_2d.gd" id="1_g5hq8"]
+[ext_resource type="Texture2D" uid="uid://bab434aksyuqe" path="res://images/asssets/Jump (32x32).png" id="2_q60ct"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hyeuk"]
+radius = 97.082436
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_g5hq8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(538, 269)
+scale = Vector2(1.0000001, 1.0000001)
+shape = SubResource("CircleShape2D_hyeuk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(533.5, 259.5)
+scale = Vector2(7.46875, 5.46875)
+texture = ExtResource("2_q60ct")

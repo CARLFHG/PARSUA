@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkw2ixb41rsul"]
+
+[ext_resource type="Script" uid="uid://xedu7y62bwww" path="res://target_rock.gd" id="1_se3sf"]
+[ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="2_rvyfa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itebf"]
+size = Vector2(138, 134)
+
+[node name="Target rock" type="Area2D"]
+script = ExtResource("1_se3sf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(284, 152)
+texture = ExtResource("2_rvyfa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(284, 152)
+shape = SubResource("RectangleShape2D_itebf")
