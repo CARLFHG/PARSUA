@@ -3,50 +3,43 @@ extends Area2D
 @export var max_health := 100
 var health := max_health
 
-@onready var health_bar := $HealthBar
-@onready var sprite := $Sprite2D
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var bar_bg: ColorRect = $HealthBarBG
+@onready var bar: ColorRect = $HealthBarBG/HealthBar
 
-var flicker_time := 0.1  # seconds per flicker
-var flicker_count_total := 4
-var flicker_timer := 0.0
-var flicker_phase := false
-var flicker_count := 0
+@export var flicker_times := 4
+@export var flicker_interval := 0.08
+
 var flickering := false
 
 func _ready():
-	_update_health_bar()
+	_update_bar()
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int):
+	if flickering:
+		return
+
+
 	health -= amount
 	health = max(health, 0)
-	_update_health_bar()
-	_start_flicker()
-	
-	if health == 0:
-		_die()
 
-func _update_health_bar() -> void:
-	if health_bar:
-		health_bar.value = health / max_health * 100
+	_update_bar()
+	_flicker()
 
-func _start_flicker() -> void:
-	flicker_timer = flicker_time
-	flicker_phase = true
-	flicker_count = flicker_count_total
+	if health <= 0:
+		queue_free()
+
+func _update_bar():
+	var ratio := float(health) / float(max_health)
+	ratio = clamp(ratio, 0.0, 1.0)
+	bar.size.x = bar_bg.size.x * ratio
+
+
+func _flicker():
 	flickering = true
-
-func _process(delta: float) -> void:
-	if flickering:
-		flicker_timer -= delta
-		if flicker_timer <= 0:
-			flicker_timer = flicker_time
-			flicker_phase = not flicker_phase
-			sprite.visible = flicker_phase
-			flicker_count -= 1
-			if flicker_count <= 0:
-				flickering = false
-				sprite.visible = true
-
-func _die() -> void:
-	print("Target died!")
-	queue_free()
+	for i in flicker_times:
+		sprite.visible = false
+		await get_tree().create_timer(flicker_interval).timeout
+		sprite.visible = true
+		await get_tree().create_timer(flicker_interval).timeout
+	flickering = false

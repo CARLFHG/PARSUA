@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyvrv2sfio7kl"]
+[gd_scene load_steps=6 format=3 uid="uid://dyvrv2sfio7kl"]
 
 [ext_resource type="PackedScene" uid="uid://daxiuukqt8jln" path="res://dragg.tscn" id="1_rwnek"]
-[ext_resource type="Texture2D" uid="uid://bab434aksyuqe" path="res://images/asssets/Jump (32x32).png" id="2_1nyod"]
 [ext_resource type="Script" uid="uid://bcerivi7fy40" path="res://area_2d_2.gd" id="3_6h7d3"]
 [ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="4_tlpgr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b122d"]
+size = Vector2(40.57892, 44.800007)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6h7d3"]
 radius = 38.27532
@@ -22,22 +22,37 @@ position = Vector2(101.05265, 46.769234)
 scale = Vector2(0.25657892, 0.25769237)
 texture = ExtResource("4_tlpgr")
 
+[node name="ColorRect" type="ColorRect" parent="Area2D2"]
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = 92.210526
+offset_top = 20.676924
+offset_right = 111.57893
+offset_bottom = 25.600012
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color(0.7738521, 2.6255324e-05, 1.3669133e-05, 0.58431375)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="Area2D2/ColorRect"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = -1
+offset_left = -0.42104626
+offset_top = -0.49230385
+offset_right = 18.947392
+offset_bottom = 4.923071
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0, 0.80383587, 0.19190085, 1)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(101.47369, 53.16923)
 shape = SubResource("RectangleShape2D_b122d")
 
-[node name="HealthBar" type="TextureProgressBar" parent="Area2D2"]
-offset_left = -122.947365
-offset_top = -82.21538
-offset_right = 351.05264
-offset_bottom = 183.78462
-
 [node name="Area2D" parent="." instance=ExtResource("1_rwnek")]
+position = Vector2(-24, 41)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(456, 283)
+position = Vector2(334, 289)
 shape = SubResource("CircleShape2D_6h7d3")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Area2D"]
-position = Vector2(453, 278)
-scale = Vector2(2.375, 2.03125)
-texture = ExtResource("2_1nyod")
