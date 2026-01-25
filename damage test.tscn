@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://ct0r28jua3agu"]
+
+[ext_resource type="PackedScene" uid="uid://dfelrk61lbgbo" path="res://draggableitem.tscn" id="1_pnkb1"]
+[ext_resource type="Texture2D" uid="uid://bab434aksyuqe" path="res://images/asssets/Jump (32x32).png" id="2_m71oh"]
+[ext_resource type="Script" uid="uid://xedu7y62bwww" path="res://target_rock.gd" id="3_nwot6"]
+[ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="4_cl02j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itebf"]
+size = Vector2(138, 134)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pnkb1"]
+radius = 97.082436
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Target rock" type="Area2D" parent="."]
+script = ExtResource("3_nwot6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Target rock"]
+position = Vector2(284, 152)
+texture = ExtResource("4_cl02j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target rock"]
+position = Vector2(284, 152)
+shape = SubResource("RectangleShape2D_itebf")
+
+[node name="Area2D" parent="." instance=ExtResource("1_pnkb1")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(538, 269)
+scale = Vector2(1.0000001, 1.0000001)
+shape = SubResource("CircleShape2D_pnkb1")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Area2D"]
+position = Vector2(533.5, 259.5)
+scale = Vector2(7.46875, 5.46875)
+texture = ExtResource("2_m71oh")
