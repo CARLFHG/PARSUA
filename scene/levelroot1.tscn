@@ -1,0 +1,158 @@
+[gd_scene load_steps=38 format=3 uid="uid://bmcxuqgvudhyf"]
+
+[ext_resource type="Texture2D" uid="uid://btdc0hujom2ru" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND CLIMB.jpg" id="1_m7qgi"]
+[ext_resource type="Texture2D" uid="uid://dgqexndugp025" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND CORNER LEFT.jpg" id="2_ysguc"]
+[ext_resource type="Texture2D" uid="uid://bouw3hulj65g6" path="res://images/asssets/tileset/tilesets/DAY - GROUND DESCENT.jpg" id="3_2pbjb"]
+[ext_resource type="Texture2D" uid="uid://cmujwgb156t5k" path="res://images/asssets/tileset/tilesets/DAY - GROUND DOWN CENTER.jpg" id="4_ae3rc"]
+[ext_resource type="Texture2D" uid="uid://drx44lr8uvwy6" path="res://images/asssets/tileset/tilesets/DAY - GROUND DOWN LEFT.jpg" id="5_nq3jo"]
+[ext_resource type="Texture2D" uid="uid://dw6emgw8jiwmx" path="res://images/asssets/tileset/tilesets/DAY - GROUND DOWN RIGHT.jpg" id="6_1af71"]
+[ext_resource type="Texture2D" uid="uid://dvuymvjg61teq" path="res://images/asssets/tileset/tilesets/DAY - GROUND TOP LEFT.jpg" id="7_hyoyy"]
+[ext_resource type="Texture2D" uid="uid://b8ko7ok2pqclb" path="res://images/asssets/tileset/tilesets/DAY - GROUND TOP RIGHT.jpg" id="8_hp5rf"]
+[ext_resource type="Texture2D" uid="uid://c0hcyv8xwmmj" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND CORNER RIGHT.jpg" id="9_6qviy"]
+[ext_resource type="Texture2D" uid="uid://btyfrc2nm6p6k" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND DESCENT.jpg" id="10_pl3rg"]
+[ext_resource type="Texture2D" uid="uid://bjgo774q83p58" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND TOP CENTER.jpg" id="11_atv1m"]
+[ext_resource type="Texture2D" uid="uid://bmde8n84mv0lp" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND TOP LEFT.jpg" id="12_lvaoc"]
+[ext_resource type="Texture2D" uid="uid://ddp51wu46nikn" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND TOP RIGHT.jpg" id="13_mgl0n"]
+[ext_resource type="Texture2D" uid="uid://kdnrsdus46wn" path="res://images/asssets/tileset/tilesets/DAY - GROUND CLIMB.jpg" id="14_pbcvv"]
+[ext_resource type="Texture2D" uid="uid://dofokufj5hf27" path="res://images/asssets/tileset/tilesets/DAY - GROUND CORNER LEFT.jpg" id="15_e62by"]
+[ext_resource type="Texture2D" uid="uid://c1dudkhk7x8hg" path="res://images/asssets/tileset/tilesets/DAY - GROUND CORNER RIGHT.jpg" id="16_pry68"]
+[ext_resource type="PackedScene" uid="uid://c0iii0d5t8i0u" path="res://scene/player.tscn" id="17_sgyl7"]
+[ext_resource type="Script" uid="uid://b6vcph83sqy05" path="res://scene/area_2d.gd" id="18_ysguc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcna4"]
+texture = ExtResource("1_m7qgi")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2egoe"]
+texture = ExtResource("2_ysguc")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2m5bl"]
+texture = ExtResource("3_2pbjb")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oxupx"]
+texture = ExtResource("4_ae3rc")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5hh6e"]
+texture = ExtResource("5_nq3jo")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_456qx"]
+texture = ExtResource("6_1af71")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iqo2l"]
+texture = ExtResource("7_hyoyy")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_huuai"]
+texture = ExtResource("8_hp5rf")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7g4v"]
+texture = ExtResource("9_6qviy")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vwyj4"]
+texture = ExtResource("10_pl3rg")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b6lyl"]
+texture = ExtResource("11_atv1m")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vy3ft"]
+texture = ExtResource("12_lvaoc")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jdf06"]
+texture = ExtResource("13_mgl0n")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_spruf"]
+texture = ExtResource("14_pbcvv")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbhqc"]
+texture = ExtResource("15_e62by")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e4r2x"]
+texture = ExtResource("16_pry68")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jqywy"]
+sources/0 = SubResource("TileSetAtlasSource_mcna4")
+sources/1 = SubResource("TileSetAtlasSource_2egoe")
+sources/2 = SubResource("TileSetAtlasSource_i7g4v")
+sources/3 = SubResource("TileSetAtlasSource_vwyj4")
+sources/4 = SubResource("TileSetAtlasSource_b6lyl")
+sources/5 = SubResource("TileSetAtlasSource_vy3ft")
+sources/6 = SubResource("TileSetAtlasSource_jdf06")
+sources/7 = SubResource("TileSetAtlasSource_spruf")
+sources/8 = SubResource("TileSetAtlasSource_vbhqc")
+sources/9 = SubResource("TileSetAtlasSource_e4r2x")
+sources/10 = SubResource("TileSetAtlasSource_2m5bl")
+sources/11 = SubResource("TileSetAtlasSource_oxupx")
+sources/12 = SubResource("TileSetAtlasSource_5hh6e")
+sources/13 = SubResource("TileSetAtlasSource_456qx")
+sources/14 = SubResource("TileSetAtlasSource_iqo2l")
+sources/15 = SubResource("TileSetAtlasSource_huuai")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0yq6r"]
+radius = 41.0
+height = 246.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7qgi"]
+size = Vector2(1895, 181)
+
+[node name="levelroot" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+tile_set = SubResource("TileSet_jqywy")
+
+[node name="player" parent="." instance=ExtResource("17_sgyl7")]
+position = Vector2(-2, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("18_ysguc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(549, 74)
+shape = SubResource("CapsuleShape2D_0yq6r")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D/CollisionShape2D"]
+offset_left = -31.0
+offset_top = -110.0
+offset_right = 27.0
+offset_bottom = 126.0
+color = Color(0.42352942, 1, 1, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-31, 276)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(49.5, 33.5)
+shape = SubResource("RectangleShape2D_m7qgi")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = -703.0
+offset_top = -63.0
+offset_right = 762.0
+offset_bottom = 131.0
+color = Color(1, 0.19215687, 1, 1)

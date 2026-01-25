@@ -140,7 +140,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ct4mp"]
-size = Vector2(21.666668, 27)
+size = Vector2(27.333332, 60)
 
 [node name="player" type="CharacterBody2D"]
 texture_filter = 1
@@ -155,9 +155,11 @@ animation = &"running"
 autoplay = "idling"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.8333335, 2.1666665)
+position = Vector2(-1.3333325, 17.666668)
 shape = SubResource("RectangleShape2D_ct4mp")
 
 [node name="jump sound" type="AudioStreamPlayer2D" parent="."]
 texture_filter = 1
 stream = ExtResource("5_s4jxa")
+
+[node name="Camera2D" type="Camera2D" parent="."]

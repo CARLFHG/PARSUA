@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1vu7818huimd"]
+
+[ext_resource type="PackedScene" uid="uid://c0iii0d5t8i0u" path="res://scene/player.tscn" id="1_52iyk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_go8nq"]
+size = Vector2(1895, 181)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_52iyk")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-31, 276)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(49.5, 33.5)
+shape = SubResource("RectangleShape2D_go8nq")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = -703.0
+offset_top = -63.0
+offset_right = 762.0
+offset_bottom = 131.0
+color = Color(0.055092014, 0.31101215, 0.48864418, 1)
