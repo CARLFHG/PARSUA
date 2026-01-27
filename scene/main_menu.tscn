@@ -197,6 +197,7 @@ stream = ExtResource("5_dclss")
 autoplay = true
 bus = &"Musika"
 
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="option" to="." method="_on_button_2_pressed"]
 [connection signal="value_changed" from="Options/HSlider" to="Options/HSlider" method="_on_value_changed"]
