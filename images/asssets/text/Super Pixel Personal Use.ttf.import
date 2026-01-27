@@ -1,0 +1,36 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://cni2e2jgi8ela"
+path="res://.godot/imported/Super Pixel Personal Use.ttf-5508c001cb3b8d1c1587d97b39b4d719.fontdata"
+
+[deps]
+
+source_file="res://images/asssets/text/Super Pixel Personal Use.ttf"
+dest_files=["res://.godot/imported/Super Pixel Personal Use.ttf-5508c001cb3b8d1c1587d97b39b4d719.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+modulate_color_glyphs=false
+hinting=1
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

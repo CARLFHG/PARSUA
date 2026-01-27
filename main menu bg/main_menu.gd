@@ -1,22 +1,32 @@
 extends Control
 
-@onready var main_buttons: VBoxContainer = $MainButtons
-@onready var options: Panel = $Options
+@onready var start_button = $start
+@onready var exit_button = $exit
+@onready var option_button = $option
+@onready var options = $Options
 
 func _on_exit_pressed():
 	get_tree().quit() #CLOSE THE GAME
 
 func _ready():
-	main_buttons.visible= true #PARA VISIBLE SA MAIN MENU
-	options.visible= false #PARA DI MUNA MAG SHOW
+	# Make individual buttons visible
+	start_button.visible = true
+	exit_button.visible = true
+	option_button.visible = true
+	
+	options.visible = false # This one stays the same
 
 
 func _on_button_2_pressed() -> void:
 	print("Settings pressed")
-	main_buttons.visible=false #PARA MAWALA UNG MAIN BUTTONS
-	options.visible=true #PARA MAG POP UP OPTIONS
+	# Hide the individual buttons
+	start_button.visible = false
+	exit_button.visible = false
+	option_button.visible = false
 	
- 
+	# Show the options panel
+	options.visible = true
+
 
 
 func _on_back_options_pressed() -> void:

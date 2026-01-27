@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkeph3lm33fjb"]
+[gd_scene load_steps=11 format=3 uid="uid://dkeph3lm33fjb"]
 
 [ext_resource type="Script" uid="uid://cyb36m76e7eps" path="res://main menu bg/main_menu.gd" id="1_sepwh"]
 [ext_resource type="VideoStream" uid="uid://ux2fveck7ait" path="res://main menu bg/Pixel Animation - Ocean Wave Loop.ogv" id="2_14wem"]
 [ext_resource type="Script" uid="uid://d2abhrobcx7ji" path="res://main menu bg/h_slider.gd" id="3_2atga"]
+[ext_resource type="FontFile" uid="uid://cni2e2jgi8ela" path="res://images/asssets/text/Super Pixel Personal Use.ttf" id="3_14wem"]
 [ext_resource type="Script" uid="uid://b1suxbrbt7q5y" path="res://main menu bg/check_button.gd" id="4_by01r"]
 [ext_resource type="AudioStream" uid="uid://dq5udpcyrf6p4" path="res://main menu bg/Pahina - Cup of Joe (Official Audio).mp3" id="5_dclss"]
 
@@ -45,40 +46,43 @@ autoplay = true
 expand = true
 loop = true
 
-[node name="MainButtons" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 129.0
-offset_top = -210.0
-offset_right = 417.0
-offset_bottom = 243.0
-grow_vertical = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="Button" type="Button" parent="MainButtons"]
-layout_mode = 2
+[node name="start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 447.0
+offset_right = 507.0
+offset_bottom = 542.6
 theme_override_colors/font_color = Color(16.638432, 16.638432, 16.638432, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_14wem")
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_wtjmy")
 text = "START"
 
-[node name="Button2" type="Button" parent="MainButtons"]
-layout_mode = 2
+[node name="exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 557.0
+offset_right = 506.0
+offset_bottom = 648.5
 theme_override_colors/font_color = Color(16.638432, 16.638432, 16.638432, 1)
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_wtjmy")
-text = "OPTION"
-
-[node name="exit" type="Button" parent="MainButtons"]
-layout_mode = 2
-theme_override_colors/font_color = Color(16.638432, 16.638432, 16.638432, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("3_14wem")
+theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_wtjmy")
 text = "EXIT
 "
+
+[node name="option" type="Button" parent="."]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 659.0
+offset_right = 507.0
+offset_bottom = 755.0
+theme_override_colors/font_color = Color(16.638432, 16.638432, 16.638432, 1)
+theme_override_fonts/font = ExtResource("3_14wem")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_wtjmy")
+text = "OPTION"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
@@ -107,10 +111,28 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 136.75
+offset_left = 0.5
+offset_top = 59.875
+offset_right = 0.5
+offset_bottom = 110.875
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_14wem")
 theme_override_font_sizes/font_size = 50
 text = "OPTIONS"
+horizontal_alignment = 1
+
+[node name="VOLUME" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 142.5
+offset_top = 262.875
+offset_right = -573.5
+offset_bottom = 287.875
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_14wem")
+theme_override_font_sizes/font_size = 24
+text = "VOLUME"
 horizontal_alignment = 1
 
 [node name="HSlider" type="HSlider" parent="Options"]
@@ -118,9 +140,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -268.0
-offset_right = 273.0
-offset_bottom = 294.0625
+offset_left = -68.0
+offset_top = 225.875
+offset_right = 334.0
+offset_bottom = 329.9375
 grow_horizontal = 2
 theme_override_styles/slider = SubResource("StyleBoxLine_fu7sn")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_glbon")
@@ -131,6 +154,26 @@ value = 1.0
 script = ExtResource("3_2atga")
 audio_bus_name = "Musika"
 
+[node name="exit2" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = 204.0
+offset_right = 109.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(16.638432, 16.638432, 16.638432, 1)
+theme_override_fonts/font = ExtResource("3_14wem")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_wtjmy")
+text = "BACK	
+"
+
 [node name="CheckButton" type="CheckButton" parent="Options"]
 layout_mode = 1
 anchors_preset = 8
@@ -138,42 +181,24 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -272.5
-offset_top = -33.375
-offset_right = 272.5
-offset_bottom = 33.375
+offset_left = -331.0
+offset_top = -96.0
+offset_right = 343.0
+offset_bottom = -29.25
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_14wem")
 theme_override_font_sizes/font_size = 24
 text = "FULLSCREEN"
 script = ExtResource("4_by01r")
-
-[node name="exit" type="Button" parent="Options"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = 195.0
-offset_right = 85.0
-offset_bottom = 268.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(16.638432, 16.638432, 16.638432, 1)
-theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxFlat_wtjmy")
-text = "BACK	
-"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_dclss")
 autoplay = true
 bus = &"Musika"
 
-[connection signal="pressed" from="MainButtons/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="MainButtons/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="option" to="." method="_on_button_2_pressed"]
 [connection signal="value_changed" from="Options/HSlider" to="Options/HSlider" method="_on_value_changed"]
+[connection signal="pressed" from="Options/exit2" to="." method="_on_back_options_pressed"]
 [connection signal="toggled" from="Options/CheckButton" to="Options/CheckButton" method="_on_toggled"]
-[connection signal="pressed" from="Options/exit" to="." method="_on_back_options_pressed"]
