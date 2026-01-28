@@ -1,24 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1vu7818huimd"]
+[gd_scene load_steps=5 format=3 uid="uid://b1vu7818huimd"]
 
 [ext_resource type="PackedScene" uid="uid://c0iii0d5t8i0u" path="res://scene/player.tscn" id="1_52iyk"]
+[ext_resource type="Texture2D" uid="uid://bjgo774q83p58" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND TOP CENTER.jpg" id="2_go8nq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_go8nq"]
-size = Vector2(1895, 181)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w58st"]
+texture = ExtResource("2_go8nq")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -0.71943474, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_52iyk"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_w58st")
 
 [node name="Node2D" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_52iyk")]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray(0, 0, 255, 255, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_52iyk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TileMapLayer"]
 position = Vector2(-31, 276)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(49.5, 33.5)
-shape = SubResource("RectangleShape2D_go8nq")
-
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
-offset_left = -703.0
-offset_top = -63.0
-offset_right = 762.0
-offset_bottom = 131.0
-color = Color(0.055092014, 0.31101215, 0.48864418, 1)
