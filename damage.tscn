@@ -23,7 +23,7 @@ scale = Vector2(0.25657892, 0.25769237)
 texture = ExtResource("4_tlpgr")
 
 [node name="ColorRect" type="ColorRect" parent="Area2D2"]
-anchors_preset = -1
+anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 92.210526
 offset_top = 20.676924
@@ -56,3 +56,8 @@ position = Vector2(-24, 41)
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(334, 289)
 shape = SubResource("CircleShape2D_6h7d3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Area2D"]
+position = Vector2(433, 269)
+scale = Vector2(0.36101997, 0.3612985)
+texture = ExtResource("4_tlpgr")

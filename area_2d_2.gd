@@ -12,8 +12,8 @@ var health := max_health
 
 var flickering := false
 
-func _ready():
-	_update_bar()
+
+	
 
 func take_damage(amount: int):
 	if flickering:
@@ -23,16 +23,13 @@ func take_damage(amount: int):
 	health -= amount
 	health = max(health, 0)
 
-	_update_bar()
+	
 	_flicker()
 
 	if health <= 0:
 		queue_free()
 
-func _update_bar():
-	var ratio := float(health) / float(max_health)
-	ratio = clamp(ratio, 0.0, 1.0)
-	bar.size.x = bar_bg.size.x * ratio
+
 
 
 func _flicker():
