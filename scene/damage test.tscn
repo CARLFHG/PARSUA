@@ -1,16 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://ct0r28jua3agu"]
+[gd_scene load_steps=8 format=3 uid="uid://ct0r28jua3agu"]
 
 [ext_resource type="Script" uid="uid://xedu7y62bwww" path="res://script/target_rock.gd" id="3_nwot6"]
 [ext_resource type="Script" uid="uid://nr4sxi1hrrh8" path="res://scene/area_2d.gd" id="3_ow0p7"]
+[ext_resource type="Texture2D" uid="uid://bt750kbwcebpn" path="res://images/asssets/levl 1/IMG_4423-removebg-preview.png" id="4_0q3rm"]
 [ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="4_cl02j"]
+[ext_resource type="VideoStream" uid="uid://dkgkyothvdtkj" path="res://images/asssets/levl 1/MOV to OGV Converter - FreeConvert.com(5).ogv" id="5_2itxv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itebf"]
 size = Vector2(53, 64)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ow0p7"]
-radius = 43.65776
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ow0p7"]
+size = Vector2(35.875, 45.75)
 
-[node name="Node2D" type="Node2D"]
+[node name="wether" type="Node2D"]
 z_index = 20
 
 [node name="Target rock" type="Area2D" parent="."]
@@ -26,16 +28,25 @@ position = Vector2(380, 136)
 shape = SubResource("RectangleShape2D_itebf")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(41, 126)
 script = ExtResource("3_ow0p7")
-drag_scale_multiplier = null
-damage = null
-damage_cooldown = null
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-position = Vector2(107, 56.000004)
-scale = Vector2(0.421875, 0.4375)
-texture = ExtResource("4_cl02j")
+position = Vector2(71.5, -73.876945)
+scale = Vector2(0.117004685, 0.117619246)
+texture = ExtResource("4_0q3rm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(112, 60)
-shape = SubResource("CircleShape2D_ow0p7")
+position = Vector2(70, -66)
+shape = SubResource("RectangleShape2D_ow0p7")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Area2D"]
+visible = false
+offset_left = 55.0
+offset_top = -88.0
+offset_right = 90.0
+offset_bottom = -39.0
+stream = ExtResource("5_2itxv")
+paused = true
+expand = true
+loop = true
