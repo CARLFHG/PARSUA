@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://dkeph3lm33fjb"]
 
 [ext_resource type="Script" uid="uid://cyb36m76e7eps" path="res://main menu bg/main_menu.gd" id="1_sepwh"]
-[ext_resource type="VideoStream" uid="uid://ux2fveck7ait" path="res://main menu bg/Pixel Animation - Ocean Wave Loop.ogv" id="2_14wem"]
+[ext_resource type="VideoStream" uid="uid://s2b80am1h0xf" path="res://main menu bg/76456f61-223d-45e7-9f06-c04f5992b938.ogv" id="2_14wem"]
 [ext_resource type="Script" uid="uid://d2abhrobcx7ji" path="res://main menu bg/h_slider.gd" id="3_2atga"]
 [ext_resource type="FontFile" uid="uid://cni2e2jgi8ela" path="res://images/asssets/text/Super Pixel Personal Use.ttf" id="3_14wem"]
 [ext_resource type="Script" uid="uid://b1suxbrbt7q5y" path="res://main menu bg/check_button.gd" id="4_by01r"]
@@ -34,6 +34,7 @@ grow_vertical = 2
 script = ExtResource("1_sepwh")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -83,15 +84,6 @@ theme_override_fonts/font = ExtResource("3_14wem")
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_wtjmy")
 text = "OPTION"
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 872.0
-offset_top = 219.0
-offset_right = 2110.0
-offset_bottom = 656.0
-theme_override_font_sizes/font_size = 200
-text = "PARSUA"
 
 [node name="Options" type="Panel" parent="."]
 layout_mode = 1
