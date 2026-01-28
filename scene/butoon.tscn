@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dubmymrn2otpx"]
 
-[ext_resource type="Script" uid="uid://cydrnydui2043" path="res://script/butoon.gd" id="1_8u5x5"]
+[ext_resource type="Script" uid="uid://cydrnydui2043" path="res://butoon.gd" id="1_8u5x5"]
 [ext_resource type="Texture2D" uid="uid://kdnrsdus46wn" path="res://images/asssets/tileset/tilesets/DAY - GROUND CLIMB.jpg" id="1_b11ci"]
 [ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="2_xc84d"]
 
