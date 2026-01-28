@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=4 uid="uid://b1vu7818huimd"]
+[gd_scene load_steps=108 format=4 uid="uid://b1vu7818huimd"]
 
 [ext_resource type="PackedScene" uid="uid://c0iii0d5t8i0u" path="res://scene/player.tscn" id="1_52iyk"]
 [ext_resource type="Texture2D" uid="uid://bjgo774q83p58" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND TOP CENTER.jpg" id="2_go8nq"]
@@ -52,6 +52,7 @@
 [ext_resource type="Texture2D" uid="uid://oewffwhb30js" path="res://images/asssets/tileset/tilesets/DAY - THORNS RIGHT.png" id="46_57wqx"]
 [ext_resource type="Texture2D" uid="uid://xux7a64pf6tq" path="res://images/asssets/tileset/tilesets/DAY - THORNS.png" id="47_rdvf7"]
 [ext_resource type="Texture2D" uid="uid://bkvji7ksfabpl" path="res://images/asssets/tileset/tilesets/DAY - TOTEM.png" id="48_1ao0t"]
+[ext_resource type="Script" uid="uid://56b1k8ss755a" path="res://area_2d3.gd" id="53_q2gmb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5005l"]
 texture = ExtResource("2_ryph7")
@@ -578,11 +579,15 @@ sources/56 = SubResource("TileSetAtlasSource_8tdt8")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryph7"]
 size = Vector2(70.333336, 109.000015)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bdlb7"]
+radius = 41.0
+height = 246.0
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(513, 1942)
 
 [node name="player" parent="." instance=ExtResource("1_52iyk")]
-position = Vector2(1874, 861)
+position = Vector2(352, 864)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -598,3 +603,18 @@ position = Vector2(-31, 276)
 position = Vector2(80.333336, 7.3333435)
 shape = SubResource("RectangleShape2D_ryph7")
 debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("53_q2gmb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3069, 878)
+shape = SubResource("CapsuleShape2D_bdlb7")
+debug_color = Color(0.92469585, 0.20342371, 0.47060335, 0.41960785)
+
+[node name="ColorRect" type="ColorRect" parent="Area2D/CollisionShape2D"]
+offset_left = -30.0
+offset_top = -115.0
+offset_right = 28.0
+offset_bottom = 121.0
+color = Color(0.8627451, 0.31764707, 0.44705883, 1)
