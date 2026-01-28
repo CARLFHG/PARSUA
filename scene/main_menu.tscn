@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://dkeph3lm33fjb"]
 
 [ext_resource type="Script" uid="uid://cyb36m76e7eps" path="res://main menu bg/main_menu.gd" id="1_sepwh"]
-[ext_resource type="VideoStream" uid="uid://s2b80am1h0xf" path="res://main menu bg/76456f61-223d-45e7-9f06-c04f5992b938.ogv" id="2_14wem"]
+[ext_resource type="VideoStream" uid="uid://jbchp42qhmkl" path="res://main menu bg/parusa homescreen.ogv" id="2_sepwh"]
 [ext_resource type="Script" uid="uid://d2abhrobcx7ji" path="res://main menu bg/h_slider.gd" id="3_2atga"]
 [ext_resource type="FontFile" uid="uid://cni2e2jgi8ela" path="res://images/asssets/text/Super Pixel Personal Use.ttf" id="3_14wem"]
-[ext_resource type="AudioStream" uid="uid://dq5udpcyrf6p4" path="res://main menu bg/Pahina - Cup of Joe (Official Audio).mp3" id="5_dclss"]
+[ext_resource type="AudioStream" uid="uid://dbgqw1037krwu" path="res://main menu bg/RPReplay_Final1769612477.mp3" id="5_sepwh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtjmy"]
 bg_color = Color(0.10931852, 0.10931852, 0.10931852, 1)
@@ -40,7 +40,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("2_14wem")
+stream = ExtResource("2_sepwh")
 volume_db = -80.0
 autoplay = true
 expand = true
@@ -166,7 +166,7 @@ text = "BACK
 "
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_dclss")
+stream = ExtResource("5_sepwh")
 autoplay = true
 bus = &"Musika"
 
