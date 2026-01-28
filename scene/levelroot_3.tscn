@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=4 uid="uid://bg2pxk3010e1n"]
+[gd_scene load_steps=107 format=4 uid="uid://bg2pxk3010e1n"]
 
 [ext_resource type="Texture2D" uid="uid://b44ksgbdw0rnq" path="res://images/asssets/tileset/tilesets/AFTERNOON - BRIDGE CENTER.png" id="1_uuwmf"]
 [ext_resource type="Texture2D" uid="uid://dr4ciyyv1nc38" path="res://images/asssets/tileset/tilesets/AFTERNOON - BRIDGE LEFT.png" id="2_en6ay"]
@@ -53,6 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://oewffwhb30js" path="res://images/asssets/tileset/tilesets/DAY - THORNS RIGHT.png" id="45_ku2bh"]
 [ext_resource type="Texture2D" uid="uid://xux7a64pf6tq" path="res://images/asssets/tileset/tilesets/DAY - THORNS.png" id="46_shc84"]
 [ext_resource type="Texture2D" uid="uid://bkvji7ksfabpl" path="res://images/asssets/tileset/tilesets/DAY - TOTEM.png" id="48_n8jw3"]
+[ext_resource type="VideoStream" path="res://images/asssets/Wave Animation.ogv" id="54_pe7i8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4vhyy"]
 texture = ExtResource("1_uuwmf")
@@ -548,6 +549,17 @@ sources/49 = SubResource("TileSetAtlasSource_uuc8m")
 sources/50 = SubResource("TileSetAtlasSource_urvpp")
 
 [node name="levelroot3" type="Node2D"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+texture_filter = 1
+offset_left = -165.0
+offset_top = 326.0
+offset_right = 3717.0
+offset_bottom = 1092.0
+stream = ExtResource("54_pe7i8")
+autoplay = true
+expand = true
+loop = true
 
 [node name="player" parent="." instance=ExtResource("30_5xupg")]
 position = Vector2(16, 918.00006)
