@@ -22,30 +22,6 @@ position = Vector2(101.05265, 46.769234)
 scale = Vector2(0.25657892, 0.25769237)
 texture = ExtResource("4_tlpgr")
 
-[node name="ColorRect" type="ColorRect" parent="Area2D2"]
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 92.210526
-offset_top = 20.676924
-offset_right = 111.57893
-offset_bottom = 25.600012
-size_flags_horizontal = 0
-size_flags_vertical = 0
-color = Color(0.7738521, 2.6255324e-05, 1.3669133e-05, 0.58431375)
-metadata/_edit_use_anchors_ = true
-
-[node name="ColorRect2" type="ColorRect" parent="Area2D2/ColorRect"]
-layout_direction = 2
-layout_mode = 1
-anchors_preset = -1
-offset_left = -0.42104626
-offset_top = -0.49230385
-offset_right = 18.947392
-offset_bottom = 4.923071
-grow_horizontal = 0
-grow_vertical = 2
-color = Color(0, 0.80383587, 0.19190085, 1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
 position = Vector2(101.47369, 53.16923)
 shape = SubResource("RectangleShape2D_b122d")

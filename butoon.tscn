@@ -1,22 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://dubmymrn2otpx"]
+[gd_scene load_steps=2 format=3 uid="uid://dubmymrn2otpx"]
 
-[ext_resource type="Script" uid="uid://cydrnydui2043" path="res://butoon.gd" id="1_8u5x5"]
-[ext_resource type="Texture2D" uid="uid://kdnrsdus46wn" path="res://images/asssets/tileset/tilesets/DAY - GROUND CLIMB.jpg" id="1_b11ci"]
-[ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="2_xc84d"]
+[ext_resource type="Script" uid="uid://cr4nkkwrqfx2u" path="res://animated_sprite_2d.gd" id="2_xc84d"]
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource("1_8u5x5")
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Button" type="Button" parent="."]
-offset_left = 340.0
-offset_top = 136.0
-offset_right = 476.0
-offset_bottom = 272.0
-icon = ExtResource("2_xc84d")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.2
+anchor_bottom = 0.2
+offset_left = 242.0
+offset_top = 109.0
+offset_right = 242.0
+offset_bottom = 109.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-200, 200)
-scale = Vector2(6.6875, 5.6875)
-texture = ExtResource("1_b11ci")
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-9537, 638)
+script = ExtResource("2_xc84d")

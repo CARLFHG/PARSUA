@@ -40,3 +40,4 @@ func _flicker():
 		sprite.visible = true
 		await get_tree().create_timer(flicker_interval).timeout
 	flickering = false
+	
