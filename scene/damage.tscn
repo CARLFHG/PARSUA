@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dyvrv2sfio7kl"]
 
-[ext_resource type="PackedScene" uid="uid://daxiuukqt8jln" path="res://scene/dragg.tscn" id="1_rwnek"]
+[ext_resource type="PackedScene" uid="uid://daxiuukqt8jln" path="res://dragg.tscn" id="1_rwnek"]
 [ext_resource type="Script" uid="uid://bcerivi7fy40" path="res://script/damagerock.gd" id="3_6h7d3"]
 [ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="4_tlpgr"]
 
