@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://ct0r28jua3agu"]
 
-[ext_resource type="PackedScene" uid="uid://dfelrk61lbgbo" path="res://draggableitem.tscn" id="1_pnkb1"]
-[ext_resource type="Texture2D" uid="uid://bab434aksyuqe" path="res://images/asssets/Jump (32x32).png" id="2_m71oh"]
-[ext_resource type="Script" uid="uid://xedu7y62bwww" path="res://target_rock.gd" id="3_nwot6"]
+[ext_resource type="PackedScene" path="res://draggableitem.tscn" id="1_pnkb1"]
+[ext_resource type="Texture2D" path="res://images/asssets/Jump (32x32).png" id="2_m71oh"]
+[ext_resource type="Script" uid="uid://xedu7y62bwww" path="res://script/target_rock.gd" id="3_nwot6"]
 [ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="4_cl02j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itebf"]

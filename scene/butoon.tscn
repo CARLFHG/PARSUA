@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqwejvs1g83dx"]
+[gd_scene load_steps=2 format=3 uid="uid://dubmymrn2otpx"]
 
-[ext_resource type="Script" uid="uid://cr4nkkwrqfx2u" path="res://animated_sprite_2d.gd" id="2_8u5x5"]
-[ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="2_xc84d"]
+[ext_resource type="Script" uid="uid://cr4nkkwrqfx2u" path="res://animated_sprite_2d.gd" id="2_xc84d"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -18,8 +17,7 @@ offset_left = 242.0
 offset_top = 109.0
 offset_right = 242.0
 offset_bottom = 109.0
-icon = ExtResource("2_xc84d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-9537, 638)
-script = ExtResource("2_8u5x5")
+script = ExtResource("2_xc84d")

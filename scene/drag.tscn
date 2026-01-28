@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://btuf2ursjnnfm"]
 
-[ext_resource type="Script" uid="uid://c611wfce3y1ek" path="res://area_2d.gd" id="1_g5hq8"]
-[ext_resource type="Texture2D" uid="uid://bab434aksyuqe" path="res://images/asssets/Jump (32x32).png" id="2_q60ct"]
+[ext_resource type="Script" uid="uid://c611wfce3y1ek" path="res://drag.gd" id="1_g5hq8"]
+[ext_resource type="Texture2D" path="res://images/asssets/Jump (32x32).png" id="2_q60ct"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hyeuk"]
 radius = 97.082436

@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dofokufj5hf27" path="res://images/asssets/tileset/tilesets/DAY - GROUND CORNER LEFT.jpg" id="15_e62by"]
 [ext_resource type="Texture2D" uid="uid://c1dudkhk7x8hg" path="res://images/asssets/tileset/tilesets/DAY - GROUND CORNER RIGHT.jpg" id="16_pry68"]
 [ext_resource type="PackedScene" uid="uid://c0iii0d5t8i0u" path="res://scene/player.tscn" id="17_sgyl7"]
-[ext_resource type="Script" uid="uid://b6vcph83sqy05" path="res://scene/area_2d.gd" id="18_ysguc"]
+[ext_resource type="Script" uid="uid://b6vcph83sqy05" path="res://script/area_2d.gd" id="18_ysguc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcna4"]
 texture = ExtResource("1_m7qgi")
