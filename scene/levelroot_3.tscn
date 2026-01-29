@@ -550,7 +550,7 @@ sources/49 = SubResource("TileSetAtlasSource_uuc8m")
 sources/50 = SubResource("TileSetAtlasSource_urvpp")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8w54"]
-size = Vector2(148, 242.5)
+size = Vector2(263, 250.25)
 
 [node name="levelroot3" type="Node2D"]
 
@@ -585,6 +585,7 @@ position = Vector2(3472, 597)
 
 [node name="Button" type="Button" parent="Area2D"]
 visible = false
+z_index = 10
 texture_filter = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -600,7 +601,7 @@ grow_vertical = 0
 text = "pause"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(3001, 942)
+position = Vector2(3006.5, 935.875)
 shape = SubResource("RectangleShape2D_o8w54")
 
 [connection signal="body_entered" from="Area2D" to="VideoStreamPlayer" method="_on_area_2d_body_entered"]
