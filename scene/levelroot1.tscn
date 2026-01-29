@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bmcxuqgvudhyf"]
+[gd_scene load_steps=45 format=3 uid="uid://bmcxuqgvudhyf"]
 
 [ext_resource type="Texture2D" uid="uid://btdc0hujom2ru" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND CLIMB.jpg" id="1_m7qgi"]
 [ext_resource type="Texture2D" uid="uid://dgqexndugp025" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND CORNER LEFT.jpg" id="2_ysguc"]
@@ -18,11 +18,11 @@
 [ext_resource type="Texture2D" uid="uid://c1dudkhk7x8hg" path="res://images/asssets/tileset/tilesets/DAY - GROUND CORNER RIGHT.jpg" id="16_pry68"]
 [ext_resource type="PackedScene" uid="uid://c0iii0d5t8i0u" path="res://scene/player.tscn" id="17_sgyl7"]
 [ext_resource type="Script" uid="uid://b6vcph83sqy05" path="res://script/area_2d.gd" id="18_ysguc"]
-[ext_resource type="Script" uid="uid://4tcv2bsw7shs" path="res://dragsa1.gd" id="21_1af71"]
-[ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="21_hyoyy"]
-[ext_resource type="Script" uid="uid://lq5knesd51gd" path="res://scene/static_body_2d_2.gd" id="21_nq3jo"]
+[ext_resource type="PackedScene" uid="uid://ct0r28jua3agu" path="res://scene/damage test.tscn" id="19_2pbjb"]
 [ext_resource type="Texture2D" uid="uid://b62opona42s1n" path="res://images/asssets/levl 1/windstrenghth-removebg-preview.png" id="22_1af71"]
-[ext_resource type="Texture2D" uid="uid://bt750kbwcebpn" path="res://images/asssets/levl 1/IMG_4423-removebg-preview.png" id="22_hyoyy"]
+[ext_resource type="Script" uid="uid://nr4sxi1hrrh8" path="res://scene/area_2d.gd" id="22_hp5rf"]
+[ext_resource type="Texture2D" uid="uid://b0ov02awgrnj8" path="res://images/asssets/levl 1/saltwater_spray_1_-removebg-preview.png" id="22_hyoyy"]
+[ext_resource type="Texture2D" uid="uid://d4c0jutsegjg" path="res://images/asssets/minkraft/OIP (3).jpg" id="23_hyoyy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcna4"]
 texture = ExtResource("1_m7qgi")
@@ -125,22 +125,25 @@ height = 246.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m7qgi"]
 size = Vector2(1895, 181)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hp5rf"]
-radius = 13.928389
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3jo"]
+size = Vector2(34, 28.5)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1af71"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_hyoyy"]
-radius = 31.144823
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1af71"]
+size = Vector2(30.34375, 26.9375)
 
 [node name="levelroot" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -85.00001)
+scale = Vector2(0.91173255, 0.80288476)
+texture = ExtResource("23_hyoyy")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
 tile_set = SubResource("TileSet_jqywy")
 
 [node name="player" parent="." instance=ExtResource("17_sgyl7")]
-position = Vector2(-2, 0)
+position = Vector2(2, 2)
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("18_ysguc")
@@ -170,58 +173,30 @@ offset_right = 762.0
 offset_bottom = 131.0
 color = Color(1, 0.19215687, 1, 1)
 
-[node name="Area2D3" type="Area2D" parent="."]
-script = ExtResource("21_1af71")
+[node name="wether" parent="." instance=ExtResource("19_2pbjb")]
+position = Vector2(-67, -18)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
-position = Vector2(-139, -67)
-shape = SubResource("CircleShape2D_hp5rf")
+[node name="Area2D2" type="Area2D" parent="."]
+script = ExtResource("22_hp5rf")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-physics_material_override = SubResource("PhysicsMaterial_1af71")
-script = ExtResource("21_nq3jo")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
-position = Vector2(116.25001, 25.000002)
-scale = Vector2(0.37109363, 0.375)
-texture = ExtResource("21_hyoyy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(117, 26)
-shape = SubResource("CircleShape2D_hyoyy")
-
-[node name="Area2D4" type="Area2D" parent="."]
-script = ExtResource("21_1af71")
-
-[node name="wateh" type="Sprite2D" parent="Area2D4"]
-position = Vector2(-257.99997, -78.00001)
-scale = Vector2(0.06214957, 0.061616298)
+[node name="Sprite2D" type="Sprite2D" parent="Area2D2"]
+position = Vector2(42.000004, -88)
+scale = Vector2(0.0883921, 0.093447894)
 texture = ExtResource("22_hyoyy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
-position = Vector2(-258, -75)
-shape = SubResource("CircleShape2D_hp5rf")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(43, -87.25)
+shape = SubResource("RectangleShape2D_nq3jo")
 
-[node name="Area2D5" type="Area2D" parent="."]
-script = ExtResource("21_1af71")
+[node name="Area2D3" type="Area2D" parent="."]
+position = Vector2(40, -80)
+script = ExtResource("22_hp5rf")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D5"]
-position = Vector2(209.99998, -47)
-scale = Vector2(0.3515625, 0.375)
-texture = ExtResource("21_hyoyy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5"]
-position = Vector2(209, -45)
-shape = SubResource("CircleShape2D_hp5rf")
-
-[node name="Area2D6" type="Area2D" parent="."]
-script = ExtResource("21_1af71")
-
-[node name="Sprite2D" type="Sprite2D" parent="Area2D6"]
-position = Vector2(-304, -77.00001)
-scale = Vector2(0.072124876, 0.116416685)
+[node name="Sprite2D" type="Sprite2D" parent="Area2D3"]
+position = Vector2(-78, -6)
+scale = Vector2(0.099659964, 0.118723944)
 texture = ExtResource("22_1af71")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D6"]
-position = Vector2(-60, 25)
-shape = SubResource("CircleShape2D_hp5rf")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(-78.171875, -7.46875)
+shape = SubResource("RectangleShape2D_1af71")

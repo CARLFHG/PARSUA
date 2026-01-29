@@ -1,66 +1,59 @@
 extends Area2D
 
-@export var drag_scale_multiplier := 1.3
+@export var drag_scale := 1.2
 @export var damage := 10
-@export var damage_cooldown := 0.3
+@export var damage_cooldown := 0.2
+@onready var icon_sprite: Sprite2D = $Sprite2D
+@onready var video: VideoStreamPlayer = $VideoStreamPlayer
 
-@onready var sprite: Sprite2D = $Sprite2D
-
-var dragging := false
 var original_position: Vector2
 var original_scale: Vector2
-var grab_offset: Vector2
-var can_damage := true
+var dragging := false
+var drag_offset := Vector2.ZERO
+var damage_timer := 0.0
 
 func _ready():
-	input_pickable = true
 	original_position = global_position
-	original_scale = sprite.scale
-	area_entered.connect(_on_area_entered)
-
-func _unhandled_input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			if _is_mouse_over():
-				_start_drag(event.position)
-		else:
-			if dragging:
-				_end_drag()
+	original_scale = scale
 
 func _process(delta):
 	if dragging:
-		global_position = get_global_mouse_position() - grab_offset
+		global_position = get_global_mouse_position() + drag_offset
 
-func _start_drag(mouse_pos: Vector2):
+		# Hover damage
+		damage_timer -= delta
+		if damage_timer <= 0:
+			for area in get_overlapping_areas():
+				if area.has_method("take_damage"):
+					area.take_damage(damage)
+			damage_timer = damage_cooldown
+
+func _input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed:
+			start_drag()
+		else:
+			end_drag()
+
+func start_drag():
 	dragging = true
-	grab_offset = mouse_pos - global_position
-	sprite.scale = original_scale * drag_scale_multiplier
+	drag_offset = global_position - get_global_mouse_position()
+	scale = original_scale * drag_scale
+	z_index = 100
+	damage_timer = 0.0
 
-func _end_drag():
+	icon_sprite.visible = false
+	video.visible = true
+	video.paused = false
+	video.play()
+
+
+func end_drag():
 	dragging = false
-	sprite.scale = original_scale
+	scale = original_scale
 	global_position = original_position
+	z_index = 0
 
-func _on_area_entered(area: Area2D):
-	if not dragging:
-		return
-
-	if not can_damage:
-		return
-
-	if area.has_method("take_damage"):
-		can_damage = false
-		area.take_damage(damage)
-		await get_tree().create_timer(damage_cooldown).timeout
-		can_damage = true
-
-func _is_mouse_over() -> bool:
-	var space = get_world_2d().direct_space_state
-	var query := PhysicsPointQueryParameters2D.new()
-	query.position = get_global_mouse_position()
-	query.collide_with_areas = true
-
-	for hit in space.intersect_point(query):
-		if hit.collider == self:
-			return true
-	return falsez
+	video.stop()
+	video.visible = false
+	icon_sprite.visible = true
