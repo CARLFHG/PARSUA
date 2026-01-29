@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://ifsvjyngkwtb"]
+
+[ext_resource type="Script" uid="uid://cg287bgg8lub0" path="res://target.gd" id="1_e1yvt"]
+[ext_resource type="Texture2D" uid="uid://d8jp1dlck8ot" path="res://images/asssets/IMG_6045.PNG" id="2_5ebp1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uqips"]
+radius = 65.03076
+
+[node name="Node2D" type="StaticBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_e1yvt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_5ebp1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(224, 129)
+shape = SubResource("CircleShape2D_uqips")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+z_index = 15
+offset_left = 159.0
+offset_top = 26.0
+offset_right = 286.0
+offset_bottom = 53.0
