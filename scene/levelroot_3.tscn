@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=4 uid="uid://bg2pxk3010e1n"]
+[gd_scene load_steps=110 format=4 uid="uid://ddhisbn8twu47"]
 
 [ext_resource type="Texture2D" uid="uid://b44ksgbdw0rnq" path="res://images/asssets/tileset/tilesets/AFTERNOON - BRIDGE CENTER.png" id="1_uuwmf"]
 [ext_resource type="Texture2D" uid="uid://dr4ciyyv1nc38" path="res://images/asssets/tileset/tilesets/AFTERNOON - BRIDGE LEFT.png" id="2_en6ay"]
@@ -37,7 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://bvfc1gvcp2siu" path="res://images/asssets/tileset/tilesets/AFTERNOON - CRAB ATTACK 2.png" id="29_oeq65"]
 [ext_resource type="Texture2D" uid="uid://4v3xg0dh8w6u" path="res://images/asssets/tileset/tilesets/DAY - PLATE.png" id="30_4vhyy"]
 [ext_resource type="PackedScene" uid="uid://c0iii0d5t8i0u" path="res://scene/player.tscn" id="30_5xupg"]
-[ext_resource type="PackedScene" uid="uid://d14arf05yhl8x" path="res://scene/wall.tscn" id="31_en6ay"]
+[ext_resource type="PackedScene" path="res://scene/wall.tscn" id="31_en6ay"]
 [ext_resource type="Texture2D" uid="uid://b1ggbynaonlem" path="res://images/asssets/tileset/tilesets/DAY - PLATFORM CORNER LEFT.png" id="31_jaqx5"]
 [ext_resource type="Texture2D" uid="uid://ufmvblgr5wwy" path="res://images/asssets/tileset/tilesets/DAY - PLATFORM CORNER RIGHT.png" id="32_lwlr7"]
 [ext_resource type="Texture2D" uid="uid://1e5pn8h0ffmn" path="res://images/asssets/tileset/tilesets/DAY - PLATFORM DOWN CENTER.png" id="33_urxn8"]
@@ -570,7 +570,7 @@ loop = true
 script = ExtResource("2_o8w54")
 
 [node name="player" parent="." instance=ExtResource("30_5xupg")]
-position = Vector2(2572.0002, 913)
+position = Vector2(57, 905)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
