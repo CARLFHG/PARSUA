@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkeph3lm33fjb"]
+[gd_scene load_steps=11 format=3 uid="uid://dkeph3lm33fjb"]
 
 [ext_resource type="Script" uid="uid://cyb36m76e7eps" path="res://main menu bg/main_menu.gd" id="1_sepwh"]
 [ext_resource type="VideoStream" uid="uid://jbchp42qhmkl" path="res://main menu bg/parusa homescreen.ogv" id="2_sepwh"]
 [ext_resource type="Script" uid="uid://d2abhrobcx7ji" path="res://main menu bg/h_slider.gd" id="3_2atga"]
 [ext_resource type="FontFile" uid="uid://cni2e2jgi8ela" path="res://images/asssets/text/Super Pixel Personal Use.ttf" id="3_14wem"]
+[ext_resource type="VideoStream" uid="uid://vq21ky6vpn54" path="res://main menu bg/cutscene (1).ogv" id="3_by01r"]
 [ext_resource type="AudioStream" uid="uid://dbgqw1037krwu" path="res://main menu bg/RPReplay_Final1769612477.mp3" id="5_sepwh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtjmy"]
@@ -45,6 +46,14 @@ volume_db = -80.0
 autoplay = true
 expand = true
 loop = true
+
+[node name="cutsceneplayer" type="VideoStreamPlayer" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 1919.0
+offset_bottom = 1078.0
+stream = ExtResource("3_by01r")
+expand = true
 
 [node name="start" type="Button" parent="."]
 layout_mode = 0
@@ -171,6 +180,7 @@ volume_db = 24.0
 autoplay = true
 bus = &"Musika"
 
+[connection signal="finished" from="cutsceneplayer" to="." method="_on_cutsceneplayer_finished"]
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="option" to="." method="_on_button_2_pressed"]
