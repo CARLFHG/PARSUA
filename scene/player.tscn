@@ -121,3 +121,5 @@ stream = ExtResource("5_s4jxa")
 [node name="Camera2D" type="Camera2D" parent="."]
 texture_filter = 1
 zoom = Vector2(3, 3)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

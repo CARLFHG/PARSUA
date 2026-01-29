@@ -1,5 +1,6 @@
-[gd_scene load_steps=45 format=3 uid="uid://bmcxuqgvudhyf"]
+[gd_scene load_steps=50 format=3 uid="uid://bmcxuqgvudhyf"]
 
+[ext_resource type="Script" uid="uid://d0cfodq4qcmgt" path="res://scene/control.gd" id="1_atv1m"]
 [ext_resource type="Texture2D" uid="uid://btdc0hujom2ru" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND CLIMB.jpg" id="1_m7qgi"]
 [ext_resource type="Texture2D" uid="uid://dgqexndugp025" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND CORNER LEFT.jpg" id="2_ysguc"]
 [ext_resource type="Texture2D" uid="uid://bouw3hulj65g6" path="res://images/asssets/tileset/tilesets/DAY - GROUND DESCENT.jpg" id="3_2pbjb"]
@@ -19,10 +20,22 @@
 [ext_resource type="PackedScene" uid="uid://c0iii0d5t8i0u" path="res://scene/player.tscn" id="17_sgyl7"]
 [ext_resource type="Script" uid="uid://b6vcph83sqy05" path="res://script/area_2d.gd" id="18_ysguc"]
 [ext_resource type="PackedScene" uid="uid://ct0r28jua3agu" path="res://scene/damage test.tscn" id="19_2pbjb"]
-[ext_resource type="Texture2D" uid="uid://b62opona42s1n" path="res://images/asssets/levl 1/windstrenghth-removebg-preview.png" id="22_1af71"]
-[ext_resource type="Script" uid="uid://nr4sxi1hrrh8" path="res://scene/area_2d.gd" id="22_hp5rf"]
+[ext_resource type="Script" uid="uid://b10axidhqo4pe" path="res://scene/spray.gd" id="21_pl3rg"]
 [ext_resource type="Texture2D" uid="uid://b0ov02awgrnj8" path="res://images/asssets/levl 1/saltwater_spray_1_-removebg-preview.png" id="22_hyoyy"]
+[ext_resource type="Script" uid="uid://guiyxu4xp188" path="res://scene/TEMP.gd" id="23_6qviy"]
+[ext_resource type="Shader" uid="uid://b3sxmdlwt7ppb" path="res://scene/spray.gdshader" id="23_atv1m"]
+[ext_resource type="Texture2D" uid="uid://4ospvcfxvx4d" path="res://images/asssets/levl 1/IMG_4424-removebg-preview.png" id="23_hp5rf"]
 [ext_resource type="Texture2D" uid="uid://d4c0jutsegjg" path="res://images/asssets/minkraft/OIP (3).jpg" id="23_hyoyy"]
+[ext_resource type="VideoStream" uid="uid://cek8dmd5tndxc" path="res://images/asssets/levl 1/MOV to OGV Converter - FreeConvert.com(3).ogv" id="23_pl3rg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3jo"]
+size = Vector2(34, 34.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvaoc"]
+shader = ExtResource("23_atv1m")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1af71"]
+size = Vector2(30.34375, 32.9375)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcna4"]
 texture = ExtResource("1_m7qgi")
@@ -125,25 +138,72 @@ height = 246.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m7qgi"]
 size = Vector2(1895, 181)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3jo"]
-size = Vector2(34, 28.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1af71"]
-size = Vector2(30.34375, 26.9375)
-
 [node name="levelroot" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -85.00001)
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -103.0
+offset_top = -111.0
+offset_right = 105.0
+offset_bottom = -59.0
+script = ExtResource("1_atv1m")
+
+[node name="Inventory" type="Sprite2D" parent="Control"]
+position = Vector2(104, 25.999992)
 scale = Vector2(0.91173255, 0.80288476)
 texture = ExtResource("23_hyoyy")
+
+[node name="Area2D2" type="Area2D" parent="Control/Inventory"]
+position = Vector2(-1.0968128, 105.868256)
+scale = Vector2(1.0968128, 1.2455088)
+script = ExtResource("21_pl3rg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Inventory/Area2D2"]
+position = Vector2(42.000004, -88)
+scale = Vector2(0.0883921, 0.093447894)
+texture = ExtResource("22_hyoyy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Inventory/Area2D2"]
+position = Vector2(43, -84.25)
+shape = SubResource("RectangleShape2D_nq3jo")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Control/Inventory/Area2D2"]
+visible = false
+material = SubResource("ShaderMaterial_lvaoc")
+offset_left = 25.0
+offset_top = -102.0
+offset_right = 99.0
+offset_bottom = -37.0
+stream = ExtResource("23_pl3rg")
+paused = true
+expand = true
+loop = true
+
+[node name="Area2D3" type="Area2D" parent="Control/Inventory"]
+position = Vector2(42.7757, 6.2275543)
+scale = Vector2(1.0968128, 1.2455088)
+script = ExtResource("23_6qviy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Inventory/Area2D3"]
+position = Vector2(-78, -10)
+scale = Vector2(0.099659964, 0.118723944)
+texture = ExtResource("23_hp5rf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Inventory/Area2D3"]
+position = Vector2(-79, -6)
+shape = SubResource("RectangleShape2D_1af71")
+
+[node name="wether" parent="Control/Inventory" instance=ExtResource("19_2pbjb")]
+position = Vector2(-74.58327, 83.4491)
+scale = Vector2(1.0968128, 1.2455088)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
 tile_set = SubResource("TileSet_jqywy")
 
 [node name="player" parent="." instance=ExtResource("17_sgyl7")]
-position = Vector2(2, 2)
+position = Vector2(0, 30)
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource("18_ysguc")
@@ -172,31 +232,3 @@ offset_top = -63.0
 offset_right = 762.0
 offset_bottom = 131.0
 color = Color(1, 0.19215687, 1, 1)
-
-[node name="wether" parent="." instance=ExtResource("19_2pbjb")]
-position = Vector2(-67, -18)
-
-[node name="Area2D2" type="Area2D" parent="."]
-script = ExtResource("22_hp5rf")
-
-[node name="Sprite2D" type="Sprite2D" parent="Area2D2"]
-position = Vector2(42.000004, -88)
-scale = Vector2(0.0883921, 0.093447894)
-texture = ExtResource("22_hyoyy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(43, -87.25)
-shape = SubResource("RectangleShape2D_nq3jo")
-
-[node name="Area2D3" type="Area2D" parent="."]
-position = Vector2(40, -80)
-script = ExtResource("22_hp5rf")
-
-[node name="Sprite2D" type="Sprite2D" parent="Area2D3"]
-position = Vector2(-78, -6)
-scale = Vector2(0.099659964, 0.118723944)
-texture = ExtResource("22_1af71")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
-position = Vector2(-78.171875, -7.46875)
-shape = SubResource("RectangleShape2D_1af71")

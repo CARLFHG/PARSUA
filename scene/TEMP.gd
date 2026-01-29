@@ -3,9 +3,6 @@ extends Area2D
 @export var drag_scale := 1.2
 @export var damage := 10
 @export var damage_cooldown := 0.2
-@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-@onready var icon: Sprite2D = $Sprite2D
-
 
 var original_position: Vector2
 var original_scale: Vector2
@@ -43,10 +40,6 @@ func start_drag():
 	z_index = 100
 	damage_timer = 0.0
 
-	# swap visuals
-	icon.visible = false
-	anim.visible = true
-	anim.play("drag")
 
 
 func end_drag():
@@ -54,7 +47,3 @@ func end_drag():
 	scale = original_scale
 	global_position = original_position
 	z_index = 0
-
-	anim.stop()
-	anim.visible = false
-	icon.visible = true
