@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 	if velocity.x > 1 or velocity.x < -1:
 		animated_sprite_2d.animation = "running"
 	else:
-		animated_sprite_2d.animation = "idling" 
+		animated_sprite_2d.animation = "idling"
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -41,3 +41,13 @@ func _physics_process(delta: float) -> void:
 	elif direction == -1.0:
 		animated_sprite_2d.flip_h = true
 		
+
+func _on_checkpoint_body_entered(body: Node2D) -> void:
+	print("Something touched the checkpoint: ", body.name) # Check your 'Output' tab!
+	
+	if body.name == "player":
+		print("Player detected! Changing scene...")
+		var error = get_tree().change_scene_to_file("res://main_menu.tscn")
+		
+		if error != OK:
+			print("ERROR: Could not find the main menu file!")
