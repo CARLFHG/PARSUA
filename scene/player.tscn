@@ -1,10 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://c0iii0d5t8i0u"]
+[gd_scene load_steps=29 format=3 uid="uid://c0iii0d5t8i0u"]
 
 [ext_resource type="Script" uid="uid://bjafywn44ypym" path="res://script/player.gd" id="1_ct4mp"]
 [ext_resource type="Texture2D" uid="uid://wjd2vd52kknd" path="res://images/asssets/Idle.png" id="2_s4jxa"]
 [ext_resource type="Texture2D" uid="uid://v2tjcxtoau8l" path="res://images/asssets/Untitled189_20260125164131.png" id="3_s4jxa"]
 [ext_resource type="Texture2D" uid="uid://b3jxh2ul0aca3" path="res://images/asssets/Untitled189_20260125163735.png" id="4_oh5ij"]
 [ext_resource type="AudioStream" uid="uid://c2ccw5c4t0nks" path="res://images/asssets/sound/jump.wav" id="5_s4jxa"]
+[ext_resource type="Texture2D" uid="uid://d4c0jutsegjg" path="res://images/asssets/minkraft/OIP (3).jpg" id="6_34jf3"]
+[ext_resource type="Script" uid="uid://b10axidhqo4pe" path="res://scene/spray.gd" id="7_u7b46"]
+[ext_resource type="Texture2D" uid="uid://b0ov02awgrnj8" path="res://images/asssets/levl 1/saltwater_spray_1_-removebg-preview.png" id="8_j4wxg"]
+[ext_resource type="Shader" uid="uid://b3sxmdlwt7ppb" path="res://scene/spray.gdshader" id="9_bup7g"]
+[ext_resource type="VideoStream" uid="uid://cek8dmd5tndxc" path="res://images/asssets/levl 1/MOV to OGV Converter - FreeConvert.com(3).ogv" id="10_4ja17"]
+[ext_resource type="Script" uid="uid://guiyxu4xp188" path="res://scene/TEMP.gd" id="11_v4iqv"]
+[ext_resource type="Texture2D" uid="uid://4ospvcfxvx4d" path="res://images/asssets/levl 1/IMG_4424-removebg-preview.png" id="12_42h83"]
+[ext_resource type="PackedScene" uid="uid://ct0r28jua3agu" path="res://scene/damage test.tscn" id="13_iuf2t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oh5ij"]
 atlas = ExtResource("2_s4jxa")
@@ -97,6 +105,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ct4mp"]
 size = Vector2(23.666668, 54)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34jf3"]
+size = Vector2(37.499718, 34.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u7b46"]
+shader = ExtResource("9_bup7g")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4wxg"]
+size = Vector2(36.847565, 32.9375)
+
 [node name="player" type="CharacterBody2D"]
 texture_filter = 1
 scale = Vector2(3, 3)
@@ -122,4 +139,55 @@ stream = ExtResource("5_s4jxa")
 texture_filter = 1
 zoom = Vector2(3, 3)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Inventory" type="Sprite2D" parent="."]
+position = Vector2(-0.3333335, -51.333332)
+scale = Vector2(0.3333333, 0.27666658)
+texture = ExtResource("6_34jf3")
+
+[node name="Area2D2" type="Area2D" parent="Inventory"]
+position = Vector2(-15.000001, 102.409676)
+scale = Vector2(1.0968128, 1.2455088)
+script = ExtResource("7_u7b46")
+
+[node name="Sprite2D" type="Sprite2D" parent="Inventory/Area2D2"]
+position = Vector2(54.703957, -84.15783)
+scale = Vector2(0.068807, 0.07648231)
+texture = ExtResource("8_j4wxg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/Area2D2"]
+position = Vector2(55.615692, -83.1905)
+scale = Vector2(0.9999999, 0.9999998)
+shape = SubResource("RectangleShape2D_34jf3")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Inventory/Area2D2"]
+visible = false
+material = SubResource("ShaderMaterial_u7b46")
+offset_left = 25.0
+offset_top = -102.0
+offset_right = 99.0
+offset_bottom = -37.0
+stream = ExtResource("10_4ja17")
+paused = true
+expand = true
+loop = true
+
+[node name="Area2D3" type="Area2D" parent="Inventory"]
+position = Vector2(-42.000008, 1.2048187)
+scale = Vector2(1.0968128, 1.2455088)
+script = ExtResource("11_v4iqv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Inventory/Area2D3"]
+position = Vector2(20.969858, -25.150616)
+rotation = 1.5865043
+scale = Vector2(0.0809904, 0.08508463)
+texture = ExtResource("12_42h83")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/Area2D3"]
+position = Vector2(-2.7351952, -0.9673271)
+scale = Vector2(0.9999999, 0.9999998)
+shape = SubResource("RectangleShape2D_j4wxg")
+
+[node name="wether" parent="Inventory" instance=ExtResource("13_iuf2t")]
+position = Vector2(-77.00001, 83.13256)
+scale = Vector2(1.0968128, 1.2455088)
