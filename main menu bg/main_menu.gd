@@ -6,6 +6,7 @@ extends Control
 @onready var options = $Options
 # Match your lowercase name exactly
 @onready var cutscene_player = $cutsceneplayer 
+@onready var background_music = $AudioStreamPlayer2D
 
 func _ready():
 	# Make individual buttons visible
@@ -23,11 +24,14 @@ func _ready():
 	# Make sure it stays hidden until we actually start
 	cutscene_player.visible = false
 func _on_start_pressed() -> void:
+	# Stop the background music
+	background_music.stop()
+	
 	# Show and play the cutscene
 	cutscene_player.visible = true
 	cutscene_player.play()
 	
-	# Optional: Hide buttons so they don't block the video if it's transparent
+	# Hide buttons
 	start_button.visible = false
 	exit_button.visible = false
 	option_button.visible = false

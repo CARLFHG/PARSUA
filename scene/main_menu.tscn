@@ -4,7 +4,7 @@
 [ext_resource type="VideoStream" uid="uid://jbchp42qhmkl" path="res://main menu bg/parusa homescreen.ogv" id="2_sepwh"]
 [ext_resource type="Script" uid="uid://d2abhrobcx7ji" path="res://main menu bg/h_slider.gd" id="3_2atga"]
 [ext_resource type="FontFile" uid="uid://cni2e2jgi8ela" path="res://images/asssets/text/Super Pixel Personal Use.ttf" id="3_14wem"]
-[ext_resource type="VideoStream" uid="uid://ylkk4u71n12g" path="res://main menu bg/cutscene_converted.ogv" id="3_by01r"]
+[ext_resource type="VideoStream" uid="uid://cpkpux7tr0v0c" path="res://main menu bg/cutscene_converted.ogv" id="3_by01r"]
 [ext_resource type="AudioStream" uid="uid://dbgqw1037krwu" path="res://main menu bg/RPReplay_Final1769612477.mp3" id="5_sepwh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wtjmy"]
