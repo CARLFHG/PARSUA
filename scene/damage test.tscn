@@ -1,9 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://ct0r28jua3agu"]
+[gd_scene load_steps=12 format=3 uid="uid://ct0r28jua3agu"]
 
-[ext_resource type="Script" uid="uid://xedu7y62bwww" path="res://script/target_rock.gd" id="3_nwot6"]
 [ext_resource type="Script" uid="uid://nr4sxi1hrrh8" path="res://scene/area_2d.gd" id="3_ow0p7"]
 [ext_resource type="Texture2D" uid="uid://bt750kbwcebpn" path="res://images/asssets/levl 1/IMG_4423-removebg-preview.png" id="4_0q3rm"]
-[ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="4_cl02j"]
 [ext_resource type="Texture2D" uid="uid://cun0n36n860ew" path="res://images/asssets/animation/Untitled193_20260129081956.png" id="5_jboxc"]
 [ext_resource type="Texture2D" uid="uid://g3lqbudb7ouv" path="res://images/asssets/animation/Untitled193_20260129082006.png" id="6_q3qah"]
 [ext_resource type="Texture2D" uid="uid://2cf08mo1e1ve" path="res://images/asssets/animation/Untitled193_20260129082011.png" id="7_dif0p"]
@@ -12,11 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cc2vrnjsrw7jh" path="res://images/asssets/animation/Untitled193_20260129082035.png" id="10_g2ksv"]
 [ext_resource type="Texture2D" uid="uid://cqavnj7hhiemq" path="res://images/asssets/animation/Untitled193_20260129082045(1).png" id="11_phpod"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_itebf"]
-size = Vector2(53, 64)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ow0p7"]
-size = Vector2(54, 53.9375)
+size = Vector2(36, 39.9375)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hnq5s"]
 animations = [{
@@ -55,29 +50,17 @@ animations = [{
 [node name="wether" type="Node2D"]
 z_index = 20
 
-[node name="Target rock" type="Area2D" parent="."]
-script = ExtResource("3_nwot6")
-
-[node name="Sprite2D" type="Sprite2D" parent="Target rock"]
-position = Vector2(377.5, 136)
-scale = Vector2(0.3359375, 0.375)
-texture = ExtResource("4_cl02j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Target rock"]
-position = Vector2(380, 136)
-shape = SubResource("RectangleShape2D_itebf")
-
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(2, 2)
 script = ExtResource("3_ow0p7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-position = Vector2(68.5, -74.876945)
-scale = Vector2(0.10764432, 0.112477854)
+position = Vector2(69, -72)
+scale = Vector2(0.088923566, 0.09962439)
 texture = ExtResource("4_0q3rm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(64, -67.96875)
+position = Vector2(67, -67)
 shape = SubResource("RectangleShape2D_ow0p7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
