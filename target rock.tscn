@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cqavnj7hhiemq" path="res://images/asssets/animation/Untitled193_20260129082045(1).png" id="9_welq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ow0p7"]
-size = Vector2(88, 72.96875)
+size = Vector2(48.5, 35.871094)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hnq5s"]
 animations = [{

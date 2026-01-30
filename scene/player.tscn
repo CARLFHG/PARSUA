@@ -140,22 +140,22 @@ texture_filter = 1
 zoom = Vector2(3, 3)
 
 [node name="Inventory" type="Sprite2D" parent="."]
-position = Vector2(0.9999924, -51.333332)
-scale = Vector2(0.37389472, 0.27666658)
+position = Vector2(-0.3333335, -51.333332)
+scale = Vector2(0.3333333, 0.27666658)
 texture = ExtResource("6_34jf3")
 
 [node name="Area2D2" type="Area2D" parent="Inventory"]
-position = Vector2(-1.0968128, 105.868256)
+position = Vector2(-15.000001, 102.409676)
 scale = Vector2(1.0968128, 1.2455088)
 script = ExtResource("7_u7b46")
 
 [node name="Sprite2D" type="Sprite2D" parent="Inventory/Area2D2"]
-position = Vector2(42.08666, -85.97913)
+position = Vector2(54.703957, -84.15783)
 scale = Vector2(0.068807, 0.07648231)
 texture = ExtResource("8_j4wxg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/Area2D2"]
-position = Vector2(43.227943, -86.305504)
+position = Vector2(55.615692, -83.1905)
 scale = Vector2(0.9999999, 0.9999998)
 shape = SubResource("RectangleShape2D_34jf3")
 
@@ -172,20 +172,22 @@ expand = true
 loop = true
 
 [node name="Area2D3" type="Area2D" parent="Inventory"]
-position = Vector2(42.7757, 6.2275543)
+position = Vector2(-42.000008, 1.2048187)
 scale = Vector2(1.0968128, 1.2455088)
 script = ExtResource("11_v4iqv")
 
 [node name="Sprite2D" type="Sprite2D" parent="Inventory/Area2D3"]
-position = Vector2(-79.434494, -9.569279)
-scale = Vector2(0.062344745, 0.06550331)
+position = Vector2(20.969858, -25.150616)
+rotation = 1.5865043
+scale = Vector2(0.0809904, 0.08508463)
 texture = ExtResource("12_42h83")
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/Area2D3"]
-position = Vector2(-79.9236, -7.937395)
+position = Vector2(-2.7351952, -0.9673271)
 scale = Vector2(0.9999999, 0.9999998)
 shape = SubResource("RectangleShape2D_j4wxg")
 
 [node name="wether" parent="Inventory" instance=ExtResource("13_iuf2t")]
-position = Vector2(-74.58327, 83.4491)
+position = Vector2(-77.00001, 83.13256)
 scale = Vector2(1.0968128, 1.2455088)
