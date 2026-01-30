@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ct0r28jua3agu"]
+[gd_scene load_steps=15 format=3 uid="uid://ct0r28jua3agu"]
 
 [ext_resource type="Script" uid="uid://nr4sxi1hrrh8" path="res://scene/area_2d.gd" id="3_ow0p7"]
 [ext_resource type="Texture2D" uid="uid://bt750kbwcebpn" path="res://images/asssets/levl 1/IMG_4423-removebg-preview.png" id="4_0q3rm"]
@@ -8,10 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://sh83ci12ru2m" path="res://images/asssets/animation/Untitled193_20260129082019.png" id="8_brmpw"]
 [ext_resource type="Texture2D" uid="uid://d0x8q3d83kool" path="res://images/asssets/animation/Untitled193_20260129082027.png" id="9_b8g53"]
 [ext_resource type="Texture2D" uid="uid://cc2vrnjsrw7jh" path="res://images/asssets/animation/Untitled193_20260129082035.png" id="10_g2ksv"]
+[ext_resource type="Script" uid="uid://xedu7y62bwww" path="res://script/target_rock.gd" id="10_jboxc"]
 [ext_resource type="Texture2D" uid="uid://cqavnj7hhiemq" path="res://images/asssets/animation/Untitled193_20260129082045(1).png" id="11_phpod"]
+[ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="11_q3qah"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ow0p7"]
-size = Vector2(36, 39.9375)
+size = Vector2(55, 45.484375)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hnq5s"]
 animations = [{
@@ -47,6 +49,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dif0p"]
+size = Vector2(65, 64)
+
 [node name="wether" type="Node2D"]
 z_index = 20
 
@@ -60,7 +65,7 @@ scale = Vector2(0.088923566, 0.09962439)
 texture = ExtResource("4_0q3rm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(67, -67)
+position = Vector2(69, -68)
 shape = SubResource("RectangleShape2D_ow0p7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
@@ -71,3 +76,15 @@ sprite_frames = SubResource("SpriteFrames_hnq5s")
 autoplay = "default"
 frame = 6
 frame_progress = 1.0
+
+[node name="Target rock" type="Area2D" parent="."]
+script = ExtResource("10_jboxc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Target rock"]
+position = Vector2(377.5, 136)
+scale = Vector2(0.3359375, 0.375)
+texture = ExtResource("11_q3qah")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target rock"]
+position = Vector2(380, 136)
+shape = SubResource("RectangleShape2D_dif0p")
