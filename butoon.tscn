@@ -25,9 +25,10 @@ anchor_right = 0.2
 anchor_bottom = 0.2
 offset_left = 242.0
 offset_top = 29.0
-offset_right = 370.0
-offset_bottom = 157.0
+offset_right = 245.0
+offset_bottom = 29.0
 icon = ExtResource("2_xc84d")
+expand_icon = true
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 material = SubResource("ShaderMaterial_2t3k4")
