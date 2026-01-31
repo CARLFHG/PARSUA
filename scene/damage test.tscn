@@ -60,12 +60,12 @@ position = Vector2(2, 2)
 script = ExtResource("3_ow0p7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-position = Vector2(69, -72)
+position = Vector2(73, -73.99999)
 scale = Vector2(0.088923566, 0.09962439)
 texture = ExtResource("4_0q3rm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(67, -69.93555)
+position = Vector2(74, -72)
 shape = SubResource("RectangleShape2D_ow0p7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]

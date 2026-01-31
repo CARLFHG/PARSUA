@@ -1,13 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqwejvs1g83dx"]
+[gd_scene load_steps=7 format=3 uid="uid://bqwejvs1g83dx"]
 
-[ext_resource type="Script" uid="uid://cr4nkkwrqfx2u" path="res://animated_sprite_2d.gd" id="2_8u5x5"]
+[ext_resource type="Script" uid="uid://cydrnydui2043" path="res://butoon.gd" id="1_8u5x5"]
 [ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="2_xc84d"]
+[ext_resource type="Shader" uid="uid://b6ey036q5idd8" path="res://butoon.gdshader" id="3_jxube"]
+[ext_resource type="VideoStream" uid="uid://dy1a7d66qtm47" path="res://images/asssets/level 2 mecha/MP4 to OGV Converter - FreeConvert.com.ogv" id="3_xc84d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2t3k4"]
+shader = ExtResource("3_jxube")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxube"]
+size = Vector2(1418, 538)
 
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_8u5x5")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -15,11 +24,23 @@ anchors_preset = -1
 anchor_right = 0.2
 anchor_bottom = 0.2
 offset_left = 242.0
-offset_top = 109.0
-offset_right = 242.0
-offset_bottom = 109.0
+offset_top = 29.0
+offset_right = 370.0
+offset_bottom = 157.0
 icon = ExtResource("2_xc84d")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-9537, 638)
-script = ExtResource("2_8u5x5")
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+material = SubResource("ShaderMaterial_2t3k4")
+layout_mode = 0
+offset_left = -1498.0
+offset_top = 413.0
+offset_right = -202.0
+offset_bottom = 882.0
+stream = ExtResource("3_xc84d")
+expand = true
+
+[node name="Area2D" type="Area2D" parent="VideoStreamPlayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VideoStreamPlayer/Area2D"]
+position = Vector2(634, 283)
+shape = SubResource("RectangleShape2D_jxube")
