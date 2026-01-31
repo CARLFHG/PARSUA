@@ -13,7 +13,7 @@ var shadow = null
 @export var item_id = ""
 @export var texture : Texture
 
-static var active_drag_item: Draggableitem = null
+static var active_drag_item: DraggableItem = null
 
 func _ready() -> void:
 	input_event.connect(_on_input_event)
@@ -42,3 +42,8 @@ func _on_input_event(viewport, event, shape_idx):
 			global_position = event.position + drag_offset
 			
 		
+func _end_drag():
+	is_dragging = false
+	active_drag_item = null
+	z_index = 0
+	drag_ended.emit(self)
