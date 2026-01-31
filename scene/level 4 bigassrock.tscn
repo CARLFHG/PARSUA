@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b861pklw1qwjj"]
+
+[ext_resource type="Script" uid="uid://dnk60xhqd8ggv" path="res://scene/level_4_bigassrock.gd" id="1_8is2c"]
+[ext_resource type="Texture2D" uid="uid://dp5k8rl34dfsi" path="res://images/asssets/level4 objective/still_image-removebg-preview.png" id="1_kh5he"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8is2c"]
+size = Vector2(319, 197)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8is2c"]
+bg_color = Color(0.6, 0.9764706, 0.6, 1)
+
+[node name="rock" type="StaticBody2D"]
+script = ExtResource("1_8is2c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kh5he")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+texture_filter = 1
+position = Vector2(2.5, 11.5)
+shape = SubResource("RectangleShape2D_8is2c")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -121.0
+offset_top = 11.0
+offset_right = 131.0
+offset_bottom = 38.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_8is2c")
+value = 100.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://dxlcro070pii5"]
+[gd_scene load_steps=107 format=4 uid="uid://dxlcro070pii5"]
 
 [ext_resource type="Texture2D" uid="uid://b44ksgbdw0rnq" path="res://images/asssets/tileset/tilesets/AFTERNOON - BRIDGE CENTER.png" id="1_16a17"]
 [ext_resource type="Texture2D" uid="uid://dr4ciyyv1nc38" path="res://images/asssets/tileset/tilesets/AFTERNOON - BRIDGE LEFT.png" id="2_e1e64"]
@@ -51,6 +51,9 @@
 [ext_resource type="Texture2D" uid="uid://dbsufkp72b6j5" path="res://images/asssets/tileset/tilesets/AFTERNOON - COLUMN BRIDGE RIGHT.png" id="49_gtcuw"]
 [ext_resource type="Texture2D" uid="uid://4a263dauyctr" path="res://images/asssets/tileset/tilesets/AFTERNOON - CRAB ATTACK 1.png" id="50_exs68"]
 [ext_resource type="Texture2D" uid="uid://bvfc1gvcp2siu" path="res://images/asssets/tileset/tilesets/AFTERNOON - CRAB ATTACK 2.png" id="51_j8pwq"]
+[ext_resource type="PackedScene" uid="uid://d14arf05yhl8x" path="res://scene/wall.tscn" id="52_ya12i"]
+[ext_resource type="PackedScene" uid="uid://c0iii0d5t8i0u" path="res://scene/player.tscn" id="53_v2maa"]
+[ext_resource type="PackedScene" uid="uid://b861pklw1qwjj" path="res://scene/level 4 bigassrock.tscn" id="54_v2maa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oby1l"]
 texture = ExtResource("1_16a17")
@@ -563,4 +566,17 @@ sources/50 = SubResource("TileSetAtlasSource_5i4j8")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAAAABYAEQAAAAAAAAAnABYAEgAAAAAAABABABYAEgAAAAAAABACABYAEgAAAAAAABADABYAEgAAAAAAABAEABYAEgAAAAAAABAFABYAEgAAAAAAABAGABYAEgAAAAAAABAHABYAEgAAAAAAABAIABYAEgAAAAAAABAJABYAEgAAAAAAABAKABYAEgAAAAAAABALABYAEgAAAAAAABAMABYAEgAAAAAAABANABYAEgAAAAAAABAOABYAEgAAAAAAABAPABYAEgAAAAAAABAQABYAEgAAAAAAABARABYAEgAAAAAAABASABYAEgAAAAAAABATABYAEgAAAAAAABAUABYAEgAAAAAAABAVABYAEgAAAAAAABAWABYAEgAAAAAAABAXABYAEgAAAAAAABAYABYAEgAAAAAAABAZABYAEgAAAAAAABAaABYAEgAAAAAAABAbABYAEgAAAAAAABAcABYAEgAAAAAAABAdABYAEgAAAAAAABAeABYAEgAAAAAAABAfABYAEgAAAAAAABAgABYAEgAAAAAAABAhABYAEgAAAAAAABAiABYAEgAAAAAAABAjABYAEgAAAAAAABAkABYAEgAAAAAAABAlABYAEgAAAAAAABAmABYAEgAAAAAAABAAABUABAAAAAAAAAACABUAIgAAAAAAAAD//xYAEQAAAAAAAAD+/xYAEQAAAAAAAAD9/xYAEQAAAAAAAAAoABYAEQAAAAAAAAApABYAEQAAAAAAAAAqABYAEQAAAAAAAAArABYAEQAAAAAAAAAsABYAEQAAAAAAAAA=")
 tile_set = SubResource("TileSet_em32j")
+
+[node name="player" parent="." instance=ExtResource("53_v2maa")]
+position = Vector2(326, 915)
+
+[node name="wall" parent="." instance=ExtResource("52_ya12i")]
+position = Vector2(293, 587)
+
+[node name="wall" parent="wall" instance=ExtResource("52_ya12i")]
+position = Vector2(1343, -3)
+
+[node name="Node2D" parent="." instance=ExtResource("54_v2maa")]
+position = Vector2(1005, 961)
