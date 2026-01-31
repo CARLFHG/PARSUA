@@ -9,7 +9,7 @@ var damage := 10
 var damage_cooldown := 0.5 # seconds between hits per enemy
 
 # 🎞️ ANIMATION SPEED (SLOW THIS DOWN)
-var slide_time := 1.3 # ← INCREASE THIS to make it slower
+var slide_time := 0.3 # ← INCREASE THIS to make it slower
 
 var start_pos: Vector2
 var center_pos: Vector2
