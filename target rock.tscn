@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://clyw1kr3sh3i4"]
+[gd_scene load_steps=18 format=3 uid="uid://clyw1kr3sh3i4"]
 
 [ext_resource type="Script" uid="uid://nr4sxi1hrrh8" path="res://scene/area_2d.gd" id="1_jxuoj"]
 [ext_resource type="Script" uid="uid://xedu7y62bwww" path="res://script/target_rock.gd" id="1_uqnvg"]
-[ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="2_28c1o"]
 [ext_resource type="Texture2D" uid="uid://bt750kbwcebpn" path="res://images/asssets/levl 1/IMG_4423-removebg-preview.png" id="2_mgevj"]
 [ext_resource type="Texture2D" uid="uid://cun0n36n860ew" path="res://images/asssets/animation/Untitled193_20260129081956.png" id="3_ybnn5"]
 [ext_resource type="Texture2D" uid="uid://g3lqbudb7ouv" path="res://images/asssets/animation/Untitled193_20260129082006.png" id="4_btqxh"]
@@ -11,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://d0x8q3d83kool" path="res://images/asssets/animation/Untitled193_20260129082027.png" id="7_pyabf"]
 [ext_resource type="Texture2D" uid="uid://cc2vrnjsrw7jh" path="res://images/asssets/animation/Untitled193_20260129082035.png" id="8_8pa1y"]
 [ext_resource type="Texture2D" uid="uid://cqavnj7hhiemq" path="res://images/asssets/animation/Untitled193_20260129082045(1).png" id="9_welq8"]
+[ext_resource type="Texture2D" uid="uid://ba4w34n64a3pl" path="res://rock/IMG_6124.PNG" id="11_ybcrd"]
+[ext_resource type="Texture2D" uid="uid://c8q12ipsv636x" path="res://rock/IMG_6125.PNG" id="12_pwp1s"]
+[ext_resource type="Texture2D" uid="uid://bkte5pyvic1qr" path="res://rock/IMG_6126.PNG" id="13_pyabf"]
+[ext_resource type="Texture2D" uid="uid://dyfnchio01rqk" path="res://rock/IMG_6127.PNG" id="14_8pa1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ow0p7"]
 size = Vector2(48.5, 35.871094)
@@ -79,11 +82,11 @@ frame_progress = 1.0
 
 [node name="Target rock" type="Area2D" parent="."]
 script = ExtResource("1_uqnvg")
+rock_visuals = Array[Texture2D]([ExtResource("11_ybcrd"), ExtResource("12_pwp1s"), ExtResource("13_pyabf"), ExtResource("14_8pa1y")])
 
 [node name="Sprite2D" type="Sprite2D" parent="Target rock"]
 position = Vector2(490, 340)
 scale = Vector2(0.3359375, 0.375)
-texture = ExtResource("2_28c1o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Target rock"]
 position = Vector2(491, 341)
