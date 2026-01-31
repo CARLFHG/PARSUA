@@ -3,6 +3,18 @@ extends Area2D
 @export var damage := 12
 @export var damage_cooldown := 0.2
 @export var flash_color := Color.BLUE # Water damage flicker
+# Inside spray_agent.gd, temperature_agent.gd, or rain_cloud_agent.gd
+
+@onready var action_sound: AudioStreamPlayer2D = $ActionSound
+
+
+func apply_damage_logic(): # This is your deal_damage or apply_rain_damage function
+	var targets = get_overlapping_areas()
+	if targets.size() > 0:
+		if not action_sound.playing:
+			action_sound.play() # Plays the sizzle, spray, or rain sound
+	else:
+		action_sound.stop()
 
 var dragging := false
 var damage_timer := 0.0
@@ -11,7 +23,7 @@ var original_pos := Vector2.ZERO
 func _ready():
 	original_pos = position
 	# Start with the cloud just floating
-	$AnimatedSprite2D.play("idle") 
+	$AnimatedSprite2D.play("idle")
 
 func _process(delta):
 	if dragging:
@@ -46,7 +58,7 @@ func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			# Check if we are spawning a new one from the HUD
-			if get_parent().name != "levelroot 4": 
+			if get_parent().name != "levelroot 4":
 				var cloud_scene = load("res://scene/rain_cloud_agent.tscn")
 				var world_cloud = cloud_scene.instantiate()
 				get_tree().current_scene.add_child(world_cloud)

@@ -2,7 +2,17 @@ extends Area2D
 
 @export var damage := 10
 @export var damage_cooldown := 0.2
+# Inside spray_agent.gd, temperature_agent.gd, or rain_cloud_agent.gd
 
+@onready var action_sound: AudioStreamPlayer2D = $ActionSound
+
+func apply_damage_logic(): # This is your deal_damage or apply_rain_damage function
+	var targets = get_overlapping_areas()
+	if targets.size() > 0:
+		if not action_sound.playing:
+			action_sound.play() # Plays the sizzle, spray, or rain sound
+	else:
+		action_sound.stop()
 var dragging := false
 var original_pos := Vector2.ZERO
 var damage_timer := 0.0

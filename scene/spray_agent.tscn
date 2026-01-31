@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c60i2dnbx3inc"]
+[gd_scene load_steps=8 format=3 uid="uid://c60i2dnbx3inc"]
 
 [ext_resource type="Script" uid="uid://tb0l51pggo6c" path="res://scene/spray_agent.gd" id="1_7lwjy"]
 [ext_resource type="Texture2D" uid="uid://b0ov02awgrnj8" path="res://images/asssets/levl 1/saltwater_spray_1_-removebg-preview.png" id="2_7g7ai"]
 [ext_resource type="VideoStream" uid="uid://cek8dmd5tndxc" path="res://images/asssets/levl 1/MOV to OGV Converter - FreeConvert.com(3).ogv" id="3_7g7ai"]
 [ext_resource type="Shader" uid="uid://b8lfmp7oxnnrn" path="res://scene/spray_agent.gdshader" id="3_883sh"]
+[ext_resource type="AudioStream" uid="uid://m36c6s8x4mlg" path="res://images/asssets/sound/spray-bottle-36050.mp3" id="5_mlthc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7lwjy"]
 size = Vector2(155, 122)
@@ -41,6 +42,10 @@ scale = Vector2(0.1, 0.1)
 size_flags_horizontal = 4
 mouse_filter = 2
 stream = ExtResource("3_7g7ai")
+
+[node name="ActionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_mlthc")
+volume_db = 19.184
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]
