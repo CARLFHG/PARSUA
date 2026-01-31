@@ -74,8 +74,6 @@ position = Vector2(196, 21)
 scale = Vector2(0.509375, 0.41296297)
 sprite_frames = SubResource("SpriteFrames_hnq5s")
 autoplay = "default"
-frame = 6
-frame_progress = 1.0
 
 [node name="Target rock" type="Area2D" parent="."]
 script = ExtResource("10_jboxc")
