@@ -9,7 +9,7 @@
 shader = ExtResource("3_jxube")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jxube"]
-size = Vector2(1418, 538)
+size = Vector2(162.5, 65)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -23,25 +23,27 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.2
 anchor_bottom = 0.2
-offset_left = 242.0
+offset_left = 320.0
 offset_top = 29.0
-offset_right = 245.0
-offset_bottom = 29.0
+offset_right = 351.0
+offset_bottom = 66.0
 icon = ExtResource("2_xc84d")
 expand_icon = true
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 material = SubResource("ShaderMaterial_2t3k4")
 layout_mode = 0
-offset_left = -1498.0
-offset_top = 413.0
-offset_right = -202.0
-offset_bottom = 882.0
+offset_left = -23.0
+offset_top = 274.0
+offset_right = 148.0
+offset_bottom = 342.0
 stream = ExtResource("3_xc84d")
+autoplay = true
 expand = true
 
 [node name="Area2D" type="Area2D" parent="VideoStreamPlayer"]
+position = Vector2(-304, 156)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VideoStreamPlayer/Area2D"]
-position = Vector2(634, 283)
+position = Vector2(369.75, -122)
 shape = SubResource("RectangleShape2D_jxube")

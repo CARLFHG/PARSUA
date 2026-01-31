@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bor828evthxax"]
+[gd_scene load_steps=31 format=3 uid="uid://bor828evthxax"]
 
 [ext_resource type="Script" uid="uid://bjafywn44ypym" path="res://script/player.gd" id="1_uty7l"]
 [ext_resource type="Texture2D" uid="uid://wjd2vd52kknd" path="res://images/asssets/Idle.png" id="2_45l4g"]
@@ -13,12 +13,8 @@
 [ext_resource type="Script" uid="uid://guiyxu4xp188" path="res://scene/TEMP.gd" id="11_dpmuy"]
 [ext_resource type="Texture2D" uid="uid://4ospvcfxvx4d" path="res://images/asssets/levl 1/IMG_4424-removebg-preview.png" id="12_yww54"]
 [ext_resource type="PackedScene" uid="uid://ct0r28jua3agu" path="res://scene/damage test.tscn" id="13_j75vh"]
-[ext_resource type="Script" uid="uid://cftjh26ndhoni" path="res://control.gd" id="14_rrpoi"]
-[ext_resource type="Texture2D" uid="uid://d0tbyn4ob8j0l" path="res://main menu bg/icon.svg" id="15_34fux"]
-[ext_resource type="Shader" uid="uid://b6ey036q5idd8" path="res://butoon.gdshader" id="16_ppv7d"]
-[ext_resource type="VideoStream" uid="uid://bjc557aqycpbx" path="res://images/asssets/level 2 mecha/MP4 to OGV Converter - FreeConvert.com(1).ogv" id="17_naet1"]
-[ext_resource type="Script" uid="uid://cwrnojl42u3y8" path="res://control_2.gd" id="18_4uo0j"]
-[ext_resource type="VideoStream" uid="uid://dy1a7d66qtm47" path="res://images/asssets/level 2 mecha/MP4 to OGV Converter - FreeConvert.com.ogv" id="18_45l4g"]
+[ext_resource type="PackedScene" uid="uid://x7l2u2lmm6f5" path="res://wind buutoonl.tscn" id="14_b0q6j"]
+[ext_resource type="PackedScene" uid="uid://bqwejvs1g83dx" path="res://butoon.tscn" id="15_mhym6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oh5ij"]
 atlas = ExtResource("2_45l4g")
@@ -120,18 +116,6 @@ shader = ExtResource("9_15c7i")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j4wxg"]
 size = Vector2(36.847565, 32.9375)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qlrc"]
-shader = ExtResource("16_ppv7d")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_shobf"]
-size = Vector2(89.00011, 132.85538)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4uo0j"]
-shader = ExtResource("16_ppv7d")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxl6d"]
-size = Vector2(107.49994, 140.36151)
-
 [node name="player" type="CharacterBody2D"]
 texture_filter = 1
 scale = Vector2(3, 3)
@@ -207,80 +191,17 @@ scale = Vector2(0.9999999, 0.9999998)
 shape = SubResource("RectangleShape2D_j4wxg")
 
 [node name="wether" parent="Inventory" instance=ExtResource("13_j75vh")]
-position = Vector2(-77.00001, 83.13256)
+position = Vector2(-79.99994, 86.747025)
 scale = Vector2(1.0968128, 1.2455088)
 
-[node name="Control" type="Control" parent="Inventory"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1.0000005
-offset_top = 185.5422
-offset_right = 41.0
-offset_bottom = 225.5422
-script = ExtResource("14_rrpoi")
+[node name="Control" parent="Inventory" instance=ExtResource("14_b0q6j")]
+offset_left = -417.00012
+offset_top = -114.45792
+offset_right = -406.33337
+offset_bottom = -106.12457
 
-[node name="Button" type="Button" parent="Inventory/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.2
-anchor_bottom = 0.2
-offset_left = -106.00001
-offset_top = -209.6386
-offset_right = -83.000015
-offset_bottom = -177.87956
-icon = ExtResource("15_34fux")
-expand_icon = true
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Inventory/Control"]
-material = SubResource("ShaderMaterial_6qlrc")
-layout_mode = 0
-offset_left = -543.00006
-offset_top = -212.04823
-offset_right = -51.000244
-offset_bottom = 56.62654
-stream = ExtResource("17_naet1")
-expand = true
-loop = true
-
-[node name="Area2D" type="Area2D" parent="Inventory/Control/VideoStreamPlayer"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/Control/VideoStreamPlayer/Area2D"]
-position = Vector2(443.49994, 132.53017)
-scale = Vector2(0.9999998, 0.99999976)
-shape = SubResource("RectangleShape2D_shobf")
-
-[node name="Control2" type="Control" parent="Inventory"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("18_4uo0j")
-
-[node name="Button" type="Button" parent="Inventory/Control2"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.2
-anchor_bottom = 0.2
-offset_left = 75.000015
-offset_top = -24.09639
-offset_right = 103.000015
-offset_bottom = 12.481941
-icon = ExtResource("15_34fux")
-expand_icon = true
-
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Inventory/Control2"]
-material = SubResource("ShaderMaterial_4uo0j")
-layout_mode = 0
-offset_left = -176.00006
-offset_top = 183.13258
-offset_right = -68.00012
-offset_bottom = 332.5302
-stream = ExtResource("18_45l4g")
-expand = true
-
-[node name="Area2D" type="Area2D" parent="Inventory/Control2/VideoStreamPlayer"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/Control2/VideoStreamPlayer/Area2D"]
-position = Vector2(68.25007, 84.03616)
-scale = Vector2(0.99999976, 0.9999997)
-shape = SubResource("RectangleShape2D_vxl6d")
+[node name="Control2" parent="Inventory" instance=ExtResource("15_mhym6")]
+offset_left = -250.00003
+offset_top = -55.4217
+offset_right = -210.00003
+offset_bottom = -15.4217

@@ -616,7 +616,7 @@ position = Vector2(3650, 713)
 shape = SubResource("RectangleShape2D_hfw3f")
 
 [node name="player" parent="." instance=ExtResource("55_jaqx5")]
-position = Vector2(815, 911.00006)
+position = Vector2(794.00006, 912)
 
 [node name="Control" parent="player" instance=ExtResource("56_pmfu4")]
 offset_left = -216.66667
@@ -625,10 +625,10 @@ offset_right = -176.66667
 offset_bottom = -43.66667
 
 [node name="Control2" parent="player" instance=ExtResource("57_oeq65")]
-offset_left = -359.00003
-offset_top = -165.33334
-offset_right = -319.00003
-offset_bottom = -125.33334
+offset_left = -359.66666
+offset_top = -164.33333
+offset_right = -319.66666
+offset_bottom = -124.33333
 
 [connection signal="body_entered" from="Area2D" to="VideoStreamPlayer" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="VideoStreamPlayer" method="_on_area_2d_body_exited"]
