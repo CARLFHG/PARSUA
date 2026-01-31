@@ -1,0 +1,125 @@
+[gd_scene load_steps=18 format=3 uid="uid://d4i2ufk6v4xd2"]
+
+[ext_resource type="Script" uid="uid://bv0c7w08hhb1c" path="res://scene/wind_projectile.gd" id="1_01bk7"]
+[ext_resource type="Texture2D" uid="uid://orwga6i5exo3" path="res://images/asssets/wind_projectile/download__1_-removebg-preview.png" id="1_5m6ol"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01bk7"]
+atlas = ExtResource("1_5m6ol")
+region = Rect2(530, 0, 106, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfwh3"]
+atlas = ExtResource("1_5m6ol")
+region = Rect2(0, 74, 106, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5dfr"]
+atlas = ExtResource("1_5m6ol")
+region = Rect2(106, 74, 106, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgr7a"]
+atlas = ExtResource("1_5m6ol")
+region = Rect2(212, 74, 106, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti5sv"]
+atlas = ExtResource("1_5m6ol")
+region = Rect2(318, 74, 106, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba3i7"]
+atlas = ExtResource("1_5m6ol")
+region = Rect2(424, 74, 106, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwph1"]
+atlas = ExtResource("1_5m6ol")
+region = Rect2(530, 74, 106, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0smh6"]
+atlas = ExtResource("1_5m6ol")
+region = Rect2(0, 148, 106, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovt4d"]
+atlas = ExtResource("1_5m6ol")
+region = Rect2(106, 148, 106, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2cd7"]
+atlas = ExtResource("1_5m6ol")
+region = Rect2(212, 148, 106, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auim2"]
+atlas = ExtResource("1_5m6ol")
+region = Rect2(318, 148, 106, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckelc"]
+atlas = ExtResource("1_5m6ol")
+region = Rect2(424, 148, 106, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h4nl"]
+atlas = ExtResource("1_5m6ol")
+region = Rect2(530, 148, 106, 74)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4v1wn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01bk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfwh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5dfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgr7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti5sv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba3i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwph1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0smh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovt4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2cd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auim2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckelc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h4nl")
+}],
+"loop": true,
+"name": &"idling",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4d3qk"]
+size = Vector2(130, 85)
+
+[node name="wind_projectile" type="Area2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_01bk7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(21, 13)
+scale = Vector2(1.3962264, 1.3513514)
+sprite_frames = SubResource("SpriteFrames_4v1wn")
+animation = &"idling"
+autoplay = "idling"
+frame = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7, -2.5)
+shape = SubResource("RectangleShape2D_4d3qk")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

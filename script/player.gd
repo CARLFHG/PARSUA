@@ -1,7 +1,28 @@
 extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var jump_sound: AudioStreamPlayer2D = $"jump sound"
+# Add these at the very top with your other @onready variables
+@export var wave_scene: PackedScene = preload("res://scene/wave_projectile.tscn")
+@export var wind_scene: PackedScene = preload("res://scene/wind_projectile.tscn")
 
+# This function runs when you click the Wave Button in the HUD
+func _on_wave_button_pressed() -> void:
+	if wave_scene:
+		var wave = wave_scene.instantiate()
+		get_tree().current_scene.add_child(wave)
+		
+		var spawn_pos = global_position
+		# Changed from 60 to 80 to lower it just a little more
+		spawn_pos.y += 80 
+		
+		wave.global_position = spawn_pos
+# This function runs when you click the Wind Button in the HUD
+func _on_wind_button_pressed() -> void:
+	if wind_scene:
+		var wind = wind_scene.instantiate()
+		get_tree().current_scene.add_child(wind)
+		wind.global_position = global_position
+		print("Wind Summoned!")
 
 
 const SPEED = 300.0

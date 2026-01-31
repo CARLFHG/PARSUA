@@ -1,43 +1,48 @@
 extends StaticBody2D
 
-@export var max_health: int = 100
-var current_health: int = 100
-
+@export var max_health: int = 1000
+var health: int = 1000 # Fixes the error in image_cd579b.jpg
 @onready var sprite = $Sprite2D
 @onready var health_bar = $ProgressBar
 
 func _ready():
-	current_health = max_health
+	health = max_health
 	health_bar.max_value = max_health
-	health_bar.value = current_health
+	health_bar.value = health
 	
-	# Create a unique style so we can change colors without affecting other bars
 	var style = StyleBoxFlat.new()
 	style.bg_color = Color.GREEN
 	health_bar.add_theme_stylebox_override("fill", style)
 
-func take_damage(amount: int):
-	current_health -= amount
-	health_bar.value = current_health
+func take_damage(amount, color = Color.WHITE):
+	health -= amount
+	health_bar.value = health # Updates the bar visual
 	
-	play_effects()
+	sprite.modulate = color 
+	play_effects() 
 	
-	if current_health <= 0:
-		die()
+	await get_tree().create_timer(0.1).timeout
+	sprite.modulate = Color.WHITE
+	
+	if health <= 0:
+		queue_free()
 
 func play_effects():
 	var tween = get_tree().create_tween()
 	var bar_style = health_bar.get_theme_stylebox("fill")
 	
-	# 1. Rock flashes White (Overbright modulate)
-	tween.parallel().tween_property(sprite, "self_modulate", Color(10, 10, 10, 1), 0.05)
-	
-	# 2. Bar turns Red
+	tween.parallel().tween_property(sprite, "self_modulate", Color(5, 5, 5, 1), 0.05)
 	tween.parallel().tween_property(bar_style, "bg_color", Color.RED, 0.05)
 	
-	# 3. Return to normal
 	tween.tween_property(sprite, "self_modulate", Color.WHITE, 0.05)
 	tween.tween_property(bar_style, "bg_color", Color.GREEN, 0.1)
-
-func die():
-	queue_free()
+	
+	
+	# Add this to level_4_bigassrock.gd
+func shake():
+	var tween = get_tree().create_tween()
+	# Move the sprite back and forth quickly
+	tween.tween_property($Sprite2D, "position:x", 10, 0.05)
+	tween.tween_property($Sprite2D, "position:x", -10, 0.05)
+	tween.tween_property($Sprite2D, "position:x", 5, 0.05)
+	tween.tween_property($Sprite2D, "position:x", 0, 0.05)

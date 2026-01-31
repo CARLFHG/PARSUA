@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://c60i2dnbx3inc"]
+
+[ext_resource type="Script" uid="uid://tb0l51pggo6c" path="res://scene/spray_agent.gd" id="1_7lwjy"]
+[ext_resource type="Texture2D" uid="uid://b0ov02awgrnj8" path="res://images/asssets/levl 1/saltwater_spray_1_-removebg-preview.png" id="2_7g7ai"]
+[ext_resource type="VideoStream" uid="uid://cek8dmd5tndxc" path="res://images/asssets/levl 1/MOV to OGV Converter - FreeConvert.com(3).ogv" id="3_7g7ai"]
+[ext_resource type="Shader" uid="uid://b8lfmp7oxnnrn" path="res://scene/spray_agent.gdshader" id="3_883sh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lwjy"]
+size = Vector2(155, 122)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mlthc"]
+shader = ExtResource("3_883sh")
+
+[node name="sprayagent" type="Area2D"]
+script = ExtResource("1_7lwjy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4, 0)
+scale = Vector2(0.3888889, 0.43333334)
+texture = ExtResource("2_7g7ai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, 13)
+shape = SubResource("RectangleShape2D_7lwjy")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+material = SubResource("ShaderMaterial_mlthc")
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.00001
+offset_top = -48.0
+offset_right = 1821.0
+offset_bottom = 1191.9999
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+size_flags_horizontal = 4
+mouse_filter = 2
+stream = ExtResource("3_7g7ai")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="finished" from="VideoStreamPlayer" to="." method="_on_video_stream_player_finished"]

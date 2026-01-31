@@ -1,0 +1,75 @@
+[gd_scene load_steps=14 format=3 uid="uid://3ger6g61sp5f"]
+
+[ext_resource type="Script" uid="uid://bgh671ql2bdcv" path="res://scene/rain_cloud_agent.gd" id="1_fugv6"]
+[ext_resource type="Texture2D" uid="uid://2cf08mo1e1ve" path="res://images/asssets/animation/Untitled193_20260129082011.png" id="2_qdtn6"]
+[ext_resource type="Texture2D" uid="uid://sh83ci12ru2m" path="res://images/asssets/animation/Untitled193_20260129082019.png" id="3_5xv68"]
+[ext_resource type="Texture2D" uid="uid://d0x8q3d83kool" path="res://images/asssets/animation/Untitled193_20260129082027.png" id="4_c8e3e"]
+[ext_resource type="Texture2D" uid="uid://cc2vrnjsrw7jh" path="res://images/asssets/animation/Untitled193_20260129082035.png" id="5_3ek7w"]
+[ext_resource type="Texture2D" uid="uid://cqavnj7hhiemq" path="res://images/asssets/animation/Untitled193_20260129082045(1).png" id="6_o2ou1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_316l8"]
+atlas = ExtResource("2_qdtn6")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28j10"]
+atlas = ExtResource("3_5xv68")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptfik"]
+atlas = ExtResource("4_c8e3e")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8brnx"]
+atlas = ExtResource("5_3ek7w")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqfby"]
+atlas = ExtResource("6_o2ou1")
+region = Rect2(0, 0, 1920, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pt845"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_316l8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28j10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptfik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8brnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqfby")
+}],
+"loop": true,
+"name": &"raining",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kees"]
+size = Vector2(176, 241)
+
+[node name="Rain_Cloud_Agent" type="Area2D"]
+script = ExtResource("1_fugv6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.9999847, -8.000008)
+scale = Vector2(0.25937507, 0.24907404)
+sprite_frames = SubResource("SpriteFrames_pt845")
+animation = &"raining"
+frame_progress = 0.010568413
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, 14.5)
+shape = SubResource("RectangleShape2D_2kees")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

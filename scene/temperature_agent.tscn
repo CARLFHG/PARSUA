@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b44b7laqyywoy"]
+
+[ext_resource type="Script" uid="uid://djb04os63vy88" path="res://temperature_agent.gd" id="1_s0uit"]
+[ext_resource type="Texture2D" uid="uid://4ospvcfxvx4d" path="res://images/asssets/levl 1/IMG_4424-removebg-preview.png" id="2_sanp8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vwi3"]
+size = Vector2(396, 400)
+
+[node name="temperature_agent" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_s0uit")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 28)
+scale = Vector2(0.53120124, 0.5565553)
+texture = ExtResource("2_sanp8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 46)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_8vwi3")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
