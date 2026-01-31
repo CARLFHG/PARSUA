@@ -7,10 +7,10 @@ var health := max_health
 # --- NEW: Image Array ---
 @export var rock_visuals: Array[Texture2D] 
 
-# References to Child Nodes
+# References to Child Nodes (Updated to match your screenshot)
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var bar_bg: ColorRect = $HealthBarBG
-@onready var bar: ColorRect = $HealthBarBG/HealthBar
+# In your screenshot, HealthBar is a child of Sprite2D
+@onready var health_bar: ProgressBar = $Sprite2D/HealthBar 
 
 # Flicker Settings
 @export var flicker_times := 4
@@ -21,13 +21,14 @@ var flickering := false
 @export var slide_duration: float = 0.6
 
 func _ready():
+	# Set the health bar range based on max health
+	if health_bar:
+		health_bar.max_value = max_health
+		health_bar.value = health
+		
 	position.x = -200
-	_update_health_bar()
 	# Set the initial texture immediately on spawn
 	_update_visuals()
-
-func _on_button_pressed():
-	slide_to_center()
 
 func slide_to_center():
 	var screen_size = get_viewport_rect().size
@@ -45,7 +46,6 @@ func take_damage(amount: int):
 	health -= amount
 	health = max(health, 0)
 	
-	# CHECK OUTPUT: See if this number is actually going down
 	print("Damage taken! Current Health: ", health)
 	
 	_update_health_bar()
@@ -56,40 +56,35 @@ func take_damage(amount: int):
 		die()
 
 func _update_health_bar():
-	if bar_bg and bar:
-		var health_ratio = float(health) / max_health
-		bar.size.x = bar_bg.size.x * health_ratio
+	if health_bar:
+		# ProgressBars update their own width automatically using the 'value' property
+		health_bar.value = health
 
 func _update_visuals():
-	# If the array is empty or not set up, don't run this
 	if rock_visuals.size() < 4:
 		return
 		
 	var health_percent = float(health) / max_health
 	var index = 0
 	
-	# UPDATED LOGIC: Using >= ensures images change at exactly the right time
 	if health_percent >= 0.75: 
-		index = 0   # 100% to 75%
+		index = 0   
 	elif health_percent >= 0.50: 
-		index = 1   # 74% to 50%
+		index = 1   
 	elif health_percent >= 0.25: 
-		index = 2   # 49% to 25%
+		index = 2   
 	else: 
-		index = 3   # 24% and below
+		index = 3   
 	
-	# Force the sprite to update its texture
 	sprite.texture = rock_visuals[index]
 
 func _flicker():
 	flickering = true
 	for i in flicker_times:
-		# Flash bright Red (Red is high, Green and Blue are low)
-		sprite.modulate = Color(10, 1, 1) 
+		sprite.modulate = Color(10, 1, 1) # Flash Red
 		await get_tree().create_timer(flicker_interval).timeout
 		
-		# Return to normal color
-		sprite.modulate = Color(1, 1, 1) 
+		sprite.modulate = Color(1, 1, 1) # Normal
 		await get_tree().create_timer(flicker_interval).timeout
 	flickering = false
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://clyw1kr3sh3i4"]
+[gd_scene load_steps=20 format=3 uid="uid://clyw1kr3sh3i4"]
 
 [ext_resource type="Script" uid="uid://nr4sxi1hrrh8" path="res://scene/area_2d.gd" id="1_jxuoj"]
 [ext_resource type="Script" uid="uid://xedu7y62bwww" path="res://script/target_rock.gd" id="1_uqnvg"]
@@ -52,6 +52,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2tgk"]
+bg_color = Color(0.8734614, 0.11540715, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxuoj"]
+bg_color = Color(0.23137255, 0.75686276, 0.28627452, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dif0p"]
 size = Vector2(65, 64)
 
@@ -87,6 +93,15 @@ rock_visuals = Array[Texture2D]([ExtResource("11_ybcrd"), ExtResource("12_pwp1s"
 [node name="Sprite2D" type="Sprite2D" parent="Target rock"]
 position = Vector2(490, 340)
 scale = Vector2(0.3359375, 0.375)
+
+[node name="HealthBar" type="ProgressBar" parent="Target rock/Sprite2D"]
+offset_left = -220.27905
+offset_top = -149.33334
+offset_right = 211.34888
+offset_bottom = -96.00009
+theme_override_styles/background = SubResource("StyleBoxFlat_o2tgk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jxuoj")
+value = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Target rock"]
 position = Vector2(491, 341)
