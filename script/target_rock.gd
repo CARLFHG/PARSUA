@@ -84,9 +84,12 @@ func _update_visuals():
 func _flicker():
 	flickering = true
 	for i in flicker_times:
-		sprite.visible = false
+		# Flash bright Red (Red is high, Green and Blue are low)
+		sprite.modulate = Color(10, 1, 1) 
 		await get_tree().create_timer(flicker_interval).timeout
-		sprite.visible = true
+		
+		# Return to normal color
+		sprite.modulate = Color(1, 1, 1) 
 		await get_tree().create_timer(flicker_interval).timeout
 	flickering = false
 
