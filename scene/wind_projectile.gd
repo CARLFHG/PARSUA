@@ -1,31 +1,34 @@
 extends Area2D
 
-@export var speed := 50.0 # Faster than the wave!
+@export var speed := 500.0 
 @export var damage := 15
-   # Lower damage but faster speed
+var direction := 1 
+
+@onready var sfx = $AudioStreamPlayer2D
 
 func _ready():
-	$AnimatedSprite2D.play("idling") # Replace "blowing" with your animation name
+	$AnimatedSprite2D.play("idling") 
+	if sfx: sfx.play()
+	get_tree().create_timer(2.0).timeout.connect(clean_up)
+
+func set_direction(dir):
+	direction = dir
+	$AnimatedSprite2D.flip_h = (dir == -1)
 
 func _process(delta):
-	# Move left to right
-	position.x += speed * delta
-	
-	# Delete if off-screen
-	if position.x > 1500: 
-		queue_free()
+	position.x += (speed * direction) * delta
+	if abs(position.x) > 2500: 
+		clean_up()
 
 func _on_area_entered(area: Area2D) -> void:
 	var rock = area.get_parent()
-	
 	if rock.has_method("take_damage"):
-		# Wind uses a Cyan/Light Blue flicker
 		rock.take_damage(damage, Color.CYAN)
-		
-		# Trigger the same shake function
 		if rock.has_method("shake"):
 			rock.shake()
-			
-		# Wind passes through or disappears? 
-		# Delete the line below if you want the wind to hit multiple rocks!
-		queue_free()
+		clean_up()
+
+func clean_up():
+	if sfx and sfx.playing:
+		sfx.stop()
+	queue_free()

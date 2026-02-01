@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b861pklw1qwjj"]
+[gd_scene load_steps=10 format=3 uid="uid://b861pklw1qwjj"]
 
 [ext_resource type="Script" uid="uid://dnk60xhqd8ggv" path="res://scene/level_4_bigassrock.gd" id="1_8is2c"]
 [ext_resource type="Texture2D" uid="uid://dp5k8rl34dfsi" path="res://images/asssets/level4 objective/still_image-removebg-preview.png" id="1_kh5he"]
 [ext_resource type="AudioStream" uid="uid://cx86bhvneve68" path="res://images/asssets/sound/rock-destroy-6409.mp3" id="3_u1l3r"]
+[ext_resource type="Shader" uid="uid://c2iffsblj872u" path="res://scene/level 4 bigassrock.gdshader" id="4_1sx5b"]
+[ext_resource type="VideoStream" uid="uid://dp0yd2qd4mjgk" path="res://images/asssets/level4 objective/0a083bb0-e17a-4bd5-91f1-fceed3013bf4_converted.ogv" id="4_uplm2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8is2c"]
 size = Vector2(320, 197)
@@ -12,6 +14,9 @@ size = Vector2(321, 198)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8is2c"]
 bg_color = Color(0.6, 0.9764706, 0.6, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dr4kj"]
+shader = ExtResource("4_1sx5b")
 
 [node name="rock" type="StaticBody2D"]
 disable_mode = 2
@@ -41,3 +46,19 @@ value = 100.0
 
 [node name="hitsound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_u1l3r")
+
+[node name="DeathVideo" type="VideoStreamPlayer" parent="."]
+material = SubResource("ShaderMaterial_dr4kj")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -90.0
+offset_right = 168.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("4_uplm2")
+expand = true

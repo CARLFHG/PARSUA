@@ -1,5 +1,6 @@
-[gd_scene load_steps=108 format=4 uid="uid://b1vu7818huimd"]
+[gd_scene load_steps=109 format=4 uid="uid://b1vu7818huimd"]
 
+[ext_resource type="Texture2D" uid="uid://qc14nips7h4j" path="res://images/asssets/background/Level 3 Bg.png" id="1_bdlb7"]
 [ext_resource type="Texture2D" uid="uid://bjgo774q83p58" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND TOP CENTER.jpg" id="2_go8nq"]
 [ext_resource type="Texture2D" uid="uid://dbsufkp72b6j5" path="res://images/asssets/tileset/tilesets/AFTERNOON - COLUMN BRIDGE RIGHT.png" id="2_ryph7"]
 [ext_resource type="Texture2D" uid="uid://4a263dauyctr" path="res://images/asssets/tileset/tilesets/AFTERNOON - CRAB ATTACK 1.png" id="3_d1ghf"]
@@ -51,8 +52,8 @@
 [ext_resource type="Texture2D" uid="uid://oewffwhb30js" path="res://images/asssets/tileset/tilesets/DAY - THORNS RIGHT.png" id="46_57wqx"]
 [ext_resource type="Texture2D" uid="uid://xux7a64pf6tq" path="res://images/asssets/tileset/tilesets/DAY - THORNS.png" id="47_rdvf7"]
 [ext_resource type="Texture2D" uid="uid://bkvji7ksfabpl" path="res://images/asssets/tileset/tilesets/DAY - TOTEM.png" id="48_1ao0t"]
-[ext_resource type="PackedScene" uid="uid://c0iii0d5t8i0u" path="res://scene/player.tscn" id="53_bdlb7"]
 [ext_resource type="Script" uid="uid://56b1k8ss755a" path="res://area_2d3.gd" id="53_q2gmb"]
+[ext_resource type="PackedScene" uid="uid://cmgjnqyxeohjo" path="res://scene/playerv2.tscn" id="54_bdlb7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5005l"]
 texture = ExtResource("2_ryph7")
@@ -586,6 +587,12 @@ height = 246.0
 [node name="Node2D" type="Node2D"]
 position = Vector2(513, 1942)
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2444.9998, 638.5)
+scale = Vector2(2.60625, 0.69907415)
+texture = ExtResource("1_bdlb7")
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
 position = Vector2(-1, 0)
@@ -617,5 +624,5 @@ offset_bottom = 121.0
 color = Color(0.99215686, 0.92941177, 0.9372549, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="player" parent="." instance=ExtResource("53_bdlb7")]
-position = Vector2(301, 824)
+[node name="playerv2" parent="." instance=ExtResource("54_bdlb7")]
+position = Vector2(276, 818)

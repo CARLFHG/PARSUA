@@ -1,32 +1,38 @@
 extends Area2D
 
-@export var speed := 30.0
+@export var speed := 300.0 
 @export var damage := 100
+var direction := 1 
 
-
+@onready var sfx = $AudioStreamPlayer2D # Ensure this matches your node name!
 
 func _ready():
-	$AnimatedSprite2D.play("idling") # Replace "blowing" with your animation name
+	$AnimatedSprite2D.play("idling") 
+	# Play sound as soon as it's born
+	if sfx: sfx.play()
+	
+	# Self-destruct after 2 seconds
+	get_tree().create_timer(2.0).timeout.connect(clean_up)
+
+func set_direction(dir):
+	direction = dir
+	$AnimatedSprite2D.flip_h = (dir == -1)
 
 func _process(delta):
-	# Move automatically from left to right
-	position.x += speed * delta
-	
-	# Delete the wave if it goes off-screen to save memory
-	if position.x > 1500: 
-		queue_free()
+	position.x += (speed * direction) * delta
+	if abs(position.x) > 2500: 
+		clean_up()
 
 func _on_area_entered(area: Area2D) -> void:
-	# Look for the rock's 'hitbox'
 	var rock = area.get_parent()
-	
 	if rock.has_method("take_damage"):
-		# Deal damage and turn the rock BLUE
 		rock.take_damage(damage, Color.BLUE)
-		
-		# Trigger the shake effect
 		if rock.has_method("shake"):
 			rock.shake()
-		
-		# Delete the wave after it hits the rock
-		queue_free()
+		clean_up()
+
+func clean_up():
+	# Stop the sound BEFORE deleting the node
+	if sfx and sfx.playing:
+		sfx.stop()
+	queue_free()

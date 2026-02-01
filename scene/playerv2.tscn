@@ -187,10 +187,12 @@ metadata/_edit_use_anchors_ = true
 [node name="WaveButton" type="Button" parent="hud/hotbar2"]
 texture_filter = 1
 layout_mode = 2
+focus_mode = 0
 icon = ExtResource("9_2tyto")
 
 [node name="WindButton" type="Button" parent="hud/hotbar2"]
 layout_mode = 2
+focus_mode = 0
 icon = ExtResource("10_ihw88")
 
 [node name="WaveSound" type="AudioStreamPlayer2D" parent="."]
