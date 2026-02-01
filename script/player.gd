@@ -15,36 +15,53 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -650.0
 
 # This function runs when you click the Wave Button in the HUD
+# Inside your PLAYER script
+# This function runs when you click the Wave Button
+# This function runs when you click the Wave Button
 func _on_wave_button_pressed() -> void:
 	if wave_scene:
 		var wave = wave_scene.instantiate()
 		get_tree().current_scene.add_child(wave)
-		wave.global_position = global_position + Vector2(0, 80)
 		
-		if wave_sfx:
-			wave_sfx.play()
-			# This stops the sound after 1.5 seconds
-			await get_tree().create_timer(1.5).timeout 
-			wave_sfx.stop()
+		var spawn_pos = global_position
+		var move_dir = 1 # Default to right
+		
+		# Increase the offset to 180 to move it further behind
+		if animated_sprite_2d.flip_h: # Player is facing LEFT
+			spawn_pos.x += 180 # Spawn far to the right
+			move_dir = -1      # But move left
+		else: # Player is facing RIGHT
+			spawn_pos.x -= 180 # Spawn far to the left
+			move_dir = 1       # But move right
+			
+		spawn_pos.y += 115 
+		wave.global_position = spawn_pos
+		
+		# Tell the wave which way to go
+		if wave.has_method("set_direction"):
+			wave.set_direction(move_dir)
 
-# This function runs when you click the Wind Button in the HUD
+# This function runs when you click the Wind Button
 func _on_wind_button_pressed() -> void:
 	if wind_scene:
 		var wind = wind_scene.instantiate()
 		get_tree().current_scene.add_child(wind)
 		
-		# Lowering the wind slightly too
 		var spawn_pos = global_position
+		var move_dir = 1
+		
+		if animated_sprite_2d.flip_h:
+			spawn_pos.x += 180
+			move_dir = -1
+		else:
+			spawn_pos.x -= 180
+			move_dir = 1
+			
 		spawn_pos.y += 70
 		wind.global_position = spawn_pos
 		
-		# 3. Play the wind sound!
-		if wind_sfx:
-			wind_sfx.play()
-			await get_tree().create_timer(1).timeout
-			wind_sfx.stop()
-		
-
+		if wind.has_method("set_direction"):
+			wind.set_direction(move_dir)
 func _physics_process(delta: float) -> void:
 	# (Your existing movement and animation code remains the same)
 	if velocity.x > 1 or velocity.x < -1:

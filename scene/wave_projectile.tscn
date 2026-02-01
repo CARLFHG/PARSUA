@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cyob4nntc108m"]
+[gd_scene load_steps=18 format=3 uid="uid://cyob4nntc108m"]
 
 [ext_resource type="Texture2D" uid="uid://ddjo2am0gojh2" path="res://images/asssets/waveprojectile/Gemini_Generated_Image_kvh10jkvh10jkvh1-removebg-preview.png" id="1_sdahb"]
 [ext_resource type="Script" uid="uid://dgpxugyqwo2il" path="res://scene/wave_projectile.gd" id="1_vpkqy"]
+[ext_resource type="AudioStream" uid="uid://bq6o58gvqlu1y" path="res://images/asssets/sound/ocean-waves-376898.mp3" id="3_jnixo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vpkqy"]
 atlas = ExtResource("1_sdahb")
@@ -96,15 +97,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdahb"]
-size = Vector2(146, 74)
+size = Vector2(336.73474, 151.02043)
 
 [node name="wave_projectile" type="Area2D"]
 texture_filter = 1
-scale = Vector2(3, 3)
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_vpkqy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(50.71428, 36.96428)
+scale = Vector2(1.563492, 1.6428571)
 sprite_frames = SubResource("SpriteFrames_gcmjl")
 animation = &"idling"
 autoplay = "idling"
@@ -112,7 +115,15 @@ frame = 5
 frame_progress = 0.8956079
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, -4)
+position = Vector2(57.85714, 27.142853)
+scale = Vector2(0.6999998, 0.6999998)
 shape = SubResource("RectangleShape2D_sdahb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(54.28572, 41.428577)
+scale = Vector2(0.7, 0.7)
+stream = ExtResource("3_jnixo")
+autoplay = true
+max_distance = 10000.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

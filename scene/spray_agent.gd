@@ -2,17 +2,8 @@ extends Area2D
 
 @export var damage := 10
 @export var damage_cooldown := 0.2
-# Inside spray_agent.gd, temperature_agent.gd, or rain_cloud_agent.gd
-
 @onready var action_sound: AudioStreamPlayer2D = $ActionSound
 
-func apply_damage_logic(): # This is your deal_damage or apply_rain_damage function
-	var targets = get_overlapping_areas()
-	if targets.size() > 0:
-		if not action_sound.playing:
-			action_sound.play() # Plays the sizzle, spray, or rain sound
-	else:
-		action_sound.stop()
 var dragging := false
 var original_pos := Vector2.ZERO
 var damage_timer := 0.0
@@ -25,6 +16,7 @@ func _ready():
 func _process(delta):
 	if dragging:
 		global_position = get_global_mouse_position()
+		apply_damage_logic() # Trigger sound logic
 		
 		if not $VideoStreamPlayer.is_playing():
 			$VideoStreamPlayer.show()
@@ -36,10 +28,37 @@ func _process(delta):
 			deal_damage()
 			damage_timer = damage_cooldown
 	else:
+		stop_all_sounds() # Stop sounds when not dragging
 		if $VideoStreamPlayer.is_playing():
 			$VideoStreamPlayer.stop()
 			$VideoStreamPlayer.hide()
 			if has_node("Sprite2D"): $Sprite2D.show()
+
+# Inside spray_agent.gd and rain_cloud_agent.gd
+func apply_damage_logic():
+	var targets = get_overlapping_areas()
+	if targets.size() > 0:
+		if not action_sound.playing:
+			action_sound.play() 
+	else:
+		# When you move the mouse AWAY from the rock, we stop the sound
+		if action_sound.playing:
+			action_sound.stop()
+		
+		# Reset the rock sound so it's ready for the next hit
+		for area in targets:
+			var rock = area.get_parent()
+			if rock.has_node("hitsound"):
+				rock.hitsound.stop()
+func stop_all_sounds():
+	if action_sound.playing:
+		action_sound.stop()
+	# Find the rock in the scene and force its hitsound to stop
+	var targets = get_overlapping_areas()
+	for area in targets:
+		var rock = area.get_parent()
+		if rock.has_node("hitsound"):
+			rock.hitsound.stop()
 
 func deal_damage():
 	var targets = get_overlapping_areas()
@@ -50,21 +69,19 @@ func deal_damage():
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			# If this is the HUD icon, spawn a copy
 			if get_parent().name != "levelroot 4": 
-				var spray_scene = load("res://scene/spray_agent.tscn") # Corrected path
-				if spray_scene:
-					var world_spray = spray_scene.instantiate()
-					get_tree().current_scene.add_child(world_spray)
-					world_spray.global_position = get_global_mouse_position()
-					world_spray.dragging = true
+				var spray_scene = load("res://scene/spray_agent.tscn")
+				var world_spray = spray_scene.instantiate()
+				get_tree().current_scene.add_child(world_spray)
+				world_spray.global_position = get_global_mouse_position()
+				world_spray.dragging = true
 			else:
 				dragging = true
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if not event.pressed and dragging:
+			stop_all_sounds() # Ensure silence on release
 			dragging = false
-			# Only delete the world-copy, keep the HUD icon!
 			if get_parent().name == "levelroot 4":
 				queue_free()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://d4i2ufk6v4xd2"]
+[gd_scene load_steps=19 format=3 uid="uid://d4i2ufk6v4xd2"]
 
 [ext_resource type="Script" uid="uid://bv0c7w08hhb1c" path="res://scene/wind_projectile.gd" id="1_01bk7"]
 [ext_resource type="Texture2D" uid="uid://orwga6i5exo3" path="res://images/asssets/wind_projectile/download__1_-removebg-preview.png" id="1_5m6ol"]
+[ext_resource type="AudioStream" uid="uid://vdsxf66f6l65" path="res://images/asssets/sound/winter-wind-402331.mp3" id="3_pfwh3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_01bk7"]
 atlas = ExtResource("1_5m6ol")
@@ -121,5 +122,10 @@ frame = 6
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(7, -2.5)
 shape = SubResource("RectangleShape2D_4d3qk")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pfwh3")
+autoplay = true
+max_distance = 10000.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

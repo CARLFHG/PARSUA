@@ -4,6 +4,8 @@ extends StaticBody2D
 var health: int = 1000 # Fixes the error in image_cd579b.jpg
 @onready var sprite = $Sprite2D
 @onready var health_bar = $ProgressBar
+@onready var hitsound: AudioStreamPlayer2D = $hitsound
+
 
 func _ready():
 	health = max_health
@@ -16,17 +18,23 @@ func _ready():
 
 func take_damage(amount, color = Color.WHITE):
 	health -= amount
-	health_bar.value = health # Updates the bar visual
+	health_bar.value = health 
+	
+	if hitsound:
+		# If it's a constant hit (like spray/rain), we want it to keep making noise
+		# If the sound finished or isn't playing, start it again
+		if not hitsound.playing:
+			hitsound.play()
 	
 	sprite.modulate = color 
 	play_effects() 
+	shake()
 	
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color.WHITE
 	
 	if health <= 0:
 		queue_free()
-
 func play_effects():
 	var tween = get_tree().create_tween()
 	var bar_style = health_bar.get_theme_stylebox("fill")

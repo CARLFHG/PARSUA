@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b861pklw1qwjj"]
+[gd_scene load_steps=7 format=3 uid="uid://b861pklw1qwjj"]
 
 [ext_resource type="Script" uid="uid://dnk60xhqd8ggv" path="res://scene/level_4_bigassrock.gd" id="1_8is2c"]
 [ext_resource type="Texture2D" uid="uid://dp5k8rl34dfsi" path="res://images/asssets/level4 objective/still_image-removebg-preview.png" id="1_kh5he"]
+[ext_resource type="AudioStream" uid="uid://cx86bhvneve68" path="res://images/asssets/sound/rock-destroy-6409.mp3" id="3_u1l3r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8is2c"]
 size = Vector2(320, 197)
@@ -37,3 +38,6 @@ offset_right = 131.0
 offset_bottom = 38.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_8is2c")
 value = 100.0
+
+[node name="hitsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_u1l3r")
