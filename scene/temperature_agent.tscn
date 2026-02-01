@@ -8,6 +8,7 @@ size = Vector2(396, 400)
 
 [node name="temperature_agent" type="Area2D"]
 scale = Vector2(0.5, 0.5)
+collision_mask = 3
 script = ExtResource("1_s0uit")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

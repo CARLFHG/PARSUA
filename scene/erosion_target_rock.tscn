@@ -47,33 +47,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dif0p"]
+size = Vector2(113.15625, 310)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2tgk"]
 bg_color = Color(0.8734614, 0.11540715, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxuoj"]
 bg_color = Color(0.23137255, 0.75686276, 0.28627452, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dif0p"]
-size = Vector2(44.5, 42)
-
 [node name="Target rock" type="StaticBody2D"]
 script = ExtResource("1_nmjt0")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.56640244, 0.65625)
-scale = Vector2(0.3376384, 0.37150002)
+scale = Vector2(1, 1.101)
 sprite_frames = SubResource("SpriteFrames_nmjt0")
 animation = &"blown away"
 
-[node name="HealthBar" type="ProgressBar" parent="Sprite2D"]
-offset_left = 93.09841
-offset_top = 41.302155
-offset_right = 372.91238
-offset_bottom = 78.63547
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(231.57813, 34)
+shape = SubResource("RectangleShape2D_dif0p")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = 139.0
+offset_top = 70.0
+offset_right = 315.33517
+offset_bottom = 93.0
 theme_override_styles/background = SubResource("StyleBoxFlat_o2tgk")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jxuoj")
 value = 50.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(79, 49)
-shape = SubResource("RectangleShape2D_dif0p")

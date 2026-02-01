@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=4 uid="uid://bmcxuqgvudhyf"]
+[gd_scene load_steps=115 format=4 uid="uid://bmcxuqgvudhyf"]
 
 [ext_resource type="Texture2D" uid="uid://dalc1nogj8xhm" path="res://images/asssets/background/Level 2 Bg.png" id="1_0rkfc"]
 [ext_resource type="Texture2D" uid="uid://btdc0hujom2ru" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND CLIMB.jpg" id="1_m7qgi"]
@@ -53,8 +53,13 @@
 [ext_resource type="Texture2D" uid="uid://oewffwhb30js" path="res://images/asssets/tileset/tilesets/DAY - THORNS RIGHT.png" id="44_4021x"]
 [ext_resource type="Texture2D" uid="uid://xux7a64pf6tq" path="res://images/asssets/tileset/tilesets/DAY - THORNS.png" id="45_psi6v"]
 [ext_resource type="Texture2D" uid="uid://bkvji7ksfabpl" path="res://images/asssets/tileset/tilesets/DAY - TOTEM.png" id="47_xannh"]
+[ext_resource type="PackedScene" uid="uid://xgb1xdeehkd7" path="res://scene/target_rock.tscn" id="54_3p5n1"]
 [ext_resource type="PackedScene" uid="uid://cmgjnqyxeohjo" path="res://scene/playerv2.tscn" id="54_yitjf"]
+[ext_resource type="Texture2D" uid="uid://ba4w34n64a3pl" path="res://rock/IMG_6124.PNG" id="55_gg4qu"]
 [ext_resource type="AudioStream" uid="uid://dbgqw1037krwu" path="res://main menu bg/RPReplay_Final1769612477.mp3" id="56_cp5kk"]
+[ext_resource type="Texture2D" uid="uid://c8q12ipsv636x" path="res://rock/IMG_6125.PNG" id="56_e34e8"]
+[ext_resource type="Texture2D" uid="uid://bkte5pyvic1qr" path="res://rock/IMG_6126.PNG" id="57_g541f"]
+[ext_resource type="Texture2D" uid="uid://dyfnchio01rqk" path="res://rock/IMG_6127.PNG" id="58_ybie4"]
 [ext_resource type="PackedScene" uid="uid://d14arf05yhl8x" path="res://scene/wall.tscn" id="62_gg4qu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcna4"]
@@ -601,4 +606,28 @@ position = Vector2(22, 914.00006)
 stream = ExtResource("56_cp5kk")
 volume_db = 10.097
 autoplay = true
-bus = &"music"
+
+[node name="WeatheringRock" parent="." instance=ExtResource("54_3p5n1")]
+position = Vector2(548, 911)
+collision_layer = 3
+rock_visuals = Array[Texture2D]([ExtResource("55_gg4qu"), ExtResource("56_e34e8"), ExtResource("57_g541f"), ExtResource("58_ybie4")])
+
+[node name="WeatheringRock2" parent="." instance=ExtResource("54_3p5n1")]
+position = Vector2(1326, 1009)
+collision_layer = 3
+rock_visuals = Array[Texture2D]([ExtResource("55_gg4qu"), ExtResource("56_e34e8"), ExtResource("57_g541f"), ExtResource("58_ybie4")])
+
+[node name="WeatheringRock3" parent="." instance=ExtResource("54_3p5n1")]
+position = Vector2(1856, 1009)
+collision_layer = 3
+rock_visuals = Array[Texture2D]([ExtResource("55_gg4qu"), ExtResource("56_e34e8"), ExtResource("57_g541f"), ExtResource("58_ybie4")])
+
+[node name="WeatheringRock4" parent="." instance=ExtResource("54_3p5n1")]
+position = Vector2(2524, 1011)
+collision_layer = 3
+rock_visuals = Array[Texture2D]([ExtResource("55_gg4qu"), ExtResource("56_e34e8"), ExtResource("57_g541f"), ExtResource("58_ybie4")])
+
+[node name="WeatheringRock5" parent="." instance=ExtResource("54_3p5n1")]
+position = Vector2(3148, 1009)
+collision_layer = 3
+rock_visuals = Array[Texture2D]([ExtResource("55_gg4qu"), ExtResource("56_e34e8"), ExtResource("57_g541f"), ExtResource("58_ybie4")])

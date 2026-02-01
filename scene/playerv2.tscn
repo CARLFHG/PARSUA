@@ -170,6 +170,7 @@ mouse_filter = 2
 [node name="Rain_Cloud_Agent" parent="hud/hotbar/Panel3" instance=ExtResource("8_sy87w")]
 position = Vector2(83, 67)
 scale = Vector2(0.8, 0.57)
+collision_mask = 3
 
 [node name="hotbar2" type="HBoxContainer" parent="hud"]
 anchors_preset = -1
