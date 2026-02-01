@@ -1,6 +1,6 @@
-[gd_scene load_steps=109 format=4 uid="uid://b1vu7818huimd"]
+[gd_scene load_steps=110 format=4 uid="uid://b1vu7818huimd"]
 
-[ext_resource type="Texture2D" uid="uid://qc14nips7h4j" path="res://images/asssets/background/Level 3 Bg.png" id="1_bdlb7"]
+[ext_resource type="Texture2D" uid="uid://bkemuowerxnnn" path="res://main menu bg/Level 4 Bg.png" id="1_rjs1b"]
 [ext_resource type="Texture2D" uid="uid://bjgo774q83p58" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND TOP CENTER.jpg" id="2_go8nq"]
 [ext_resource type="Texture2D" uid="uid://dbsufkp72b6j5" path="res://images/asssets/tileset/tilesets/AFTERNOON - COLUMN BRIDGE RIGHT.png" id="2_ryph7"]
 [ext_resource type="Texture2D" uid="uid://4a263dauyctr" path="res://images/asssets/tileset/tilesets/AFTERNOON - CRAB ATTACK 1.png" id="3_d1ghf"]
@@ -54,6 +54,7 @@
 [ext_resource type="Texture2D" uid="uid://bkvji7ksfabpl" path="res://images/asssets/tileset/tilesets/DAY - TOTEM.png" id="48_1ao0t"]
 [ext_resource type="PackedScene" uid="uid://cmgjnqyxeohjo" path="res://scene/playerv2.tscn" id="54_bdlb7"]
 [ext_resource type="Script" uid="uid://bdb1hvf2y1n30" path="res://scene/checkpoint.gd" id="54_rjs1b"]
+[ext_resource type="AudioStream" uid="uid://dbgqw1037krwu" path="res://main menu bg/RPReplay_Final1769612477.mp3" id="55_rjs1b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryph7"]
 size = Vector2(70.333336, 109.000015)
@@ -590,7 +591,7 @@ position = Vector2(586, 1956)
 texture_filter = 1
 position = Vector2(2444.9998, 638.5)
 scale = Vector2(2.60625, 0.69907415)
-texture = ExtResource("1_bdlb7")
+texture = ExtResource("1_rjs1b")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-94, 828)
@@ -627,5 +628,11 @@ next_level_path = "uid://dxlcro070pii5"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(3016, 873)
 shape = SubResource("RectangleShape2D_itsfq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("55_rjs1b")
+volume_db = 10.0
+autoplay = true
+bus = &"music"
 
 [connection signal="body_entered" from="Area2D" to="playerv2" method="_on_area_2d_body_entered"]
