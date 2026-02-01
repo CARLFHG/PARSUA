@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://xgb1xdeehkd7"]
+
+[ext_resource type="Script" uid="uid://xedu7y62bwww" path="res://script/target_rock.gd" id="1_fxb5m"]
+[ext_resource type="Texture2D" uid="uid://ba4w34n64a3pl" path="res://rock/IMG_6124.PNG" id="2_iv7lr"]
+[ext_resource type="Texture2D" uid="uid://c8q12ipsv636x" path="res://rock/IMG_6125.PNG" id="3_ckgxp"]
+[ext_resource type="Texture2D" uid="uid://bkte5pyvic1qr" path="res://rock/IMG_6126.PNG" id="4_b5pc3"]
+[ext_resource type="Texture2D" uid="uid://dyfnchio01rqk" path="res://rock/IMG_6127.PNG" id="5_up0li"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2tgk"]
+bg_color = Color(0.8734614, 0.11540715, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxuoj"]
+bg_color = Color(0.23137255, 0.75686276, 0.28627452, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dif0p"]
+size = Vector2(71.5, 67)
+
+[node name="Target rock" type="StaticBody2D"]
+script = ExtResource("1_fxb5m")
+rock_visuals = Array[Texture2D]([ExtResource("2_iv7lr"), ExtResource("3_ckgxp"), ExtResource("4_b5pc3"), ExtResource("5_up0li")])
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3359375, 0.375)
+
+[node name="HealthBar" type="ProgressBar" parent="Sprite2D"]
+offset_left = -136.9302
+offset_top = -186.66667
+offset_right = 142.88376
+offset_bottom = -149.33336
+theme_override_styles/background = SubResource("StyleBoxFlat_o2tgk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jxuoj")
+value = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.25, 1.5)
+shape = SubResource("RectangleShape2D_dif0p")

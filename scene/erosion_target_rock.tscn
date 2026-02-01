@@ -1,0 +1,79 @@
+[gd_scene load_steps=14 format=3 uid="uid://bpaj3aqj3wxee"]
+
+[ext_resource type="Script" uid="uid://mhq1d5p2emi6" path="res://erosion_target_rock.gd" id="1_nmjt0"]
+[ext_resource type="Texture2D" uid="uid://6d5i16ef1h7e" path="res://rock/1.PNG" id="2_nmjt0"]
+[ext_resource type="Texture2D" uid="uid://br71mo1bf2j5x" path="res://rock/2.PNG" id="3_ik74i"]
+[ext_resource type="Texture2D" uid="uid://cryd0137rv8w6" path="res://rock/3.PNG" id="4_0bh1e"]
+[ext_resource type="Texture2D" uid="uid://bxed7aeilppqi" path="res://rock/4.PNG" id="5_e7jcg"]
+[ext_resource type="Texture2D" uid="uid://mcwjdlitew5d" path="res://rock/5.PNG" id="6_ir32s"]
+[ext_resource type="Texture2D" uid="uid://dlprf7ykw6rra" path="res://rock/6.PNG" id="7_l1qfp"]
+[ext_resource type="Texture2D" uid="uid://onbh6dwqnekj" path="res://rock/7.PNG" id="8_tey36"]
+[ext_resource type="Texture2D" uid="uid://blmibcx6k3n3t" path="res://rock/8.PNG" id="9_mhrxp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nmjt0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ik74i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0bh1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e7jcg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ir32s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_l1qfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tey36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mhrxp")
+}],
+"loop": false,
+"name": &"blown away",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nmjt0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2tgk"]
+bg_color = Color(0.8734614, 0.11540715, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxuoj"]
+bg_color = Color(0.23137255, 0.75686276, 0.28627452, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dif0p"]
+size = Vector2(44.5, 42)
+
+[node name="Target rock" type="StaticBody2D"]
+script = ExtResource("1_nmjt0")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.56640244, 0.65625)
+scale = Vector2(0.3376384, 0.37150002)
+sprite_frames = SubResource("SpriteFrames_nmjt0")
+animation = &"blown away"
+
+[node name="HealthBar" type="ProgressBar" parent="Sprite2D"]
+offset_left = 93.09841
+offset_top = 41.302155
+offset_right = 372.91238
+offset_bottom = 78.63547
+theme_override_styles/background = SubResource("StyleBoxFlat_o2tgk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jxuoj")
+value = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(79, 49)
+shape = SubResource("RectangleShape2D_dif0p")
