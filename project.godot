@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="parusa"
-run/main_scene="uid://bmcxuqgvudhyf"
+config/name="Parusa"
+run/main_scene="uid://dkeph3lm33fjb"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://main menu bg/icon.svg"
+config/icon="uid://dmm8b5kavgvms"
 
 [audio]
 
@@ -59,3 +59,4 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
