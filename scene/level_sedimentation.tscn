@@ -1,0 +1,120 @@
+[gd_scene load_steps=13 format=4 uid="uid://dcxwkyxxlfcqo"]
+
+[ext_resource type="Script" uid="uid://c41laywo0556d" path="res://script/level_sedimentation.gd" id="1_p6imr"]
+[ext_resource type="PackedScene" uid="uid://cmgjnqyxeohjo" path="res://scene/playerv2.tscn" id="1_ul346"]
+[ext_resource type="FontFile" uid="uid://cni2e2jgi8ela" path="res://images/asssets/text/Super Pixel Personal Use.ttf" id="2_ghts0"]
+[ext_resource type="Texture2D" uid="uid://cmujwgb156t5k" path="res://images/asssets/tileset/tilesets/DAY - GROUND DOWN CENTER.jpg" id="3_sjdq6"]
+[ext_resource type="Texture2D" uid="uid://drx44lr8uvwy6" path="res://images/asssets/tileset/tilesets/DAY - GROUND DOWN LEFT.jpg" id="4_ghts0"]
+[ext_resource type="Texture2D" uid="uid://dw6emgw8jiwmx" path="res://images/asssets/tileset/tilesets/DAY - GROUND DOWN RIGHT.jpg" id="5_sa50h"]
+[ext_resource type="AudioStream" uid="uid://dbgqw1037krwu" path="res://main menu bg/RPReplay_Final1769612477.mp3" id="7_sa50h"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7xru8"]
+texture = ExtResource("3_sjdq6")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1arb"]
+texture = ExtResource("4_ghts0")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_10bv0"]
+texture = ExtResource("5_sa50h")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_hyk7l"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_7xru8")
+sources/1 = SubResource("TileSetAtlasSource_p1arb")
+sources/2 = SubResource("TileSetAtlasSource_10bv0")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88dlf"]
+size = Vector2(336, 1093)
+
+[node name="level_sedimentation" type="Node2D"]
+script = ExtResource("1_p6imr")
+
+[node name="BackgroundPlayer" type="VideoStreamPlayer" parent="."]
+texture_filter = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -349.0
+offset_top = -13.0
+offset_right = 2432.0
+offset_bottom = 1066.0
+grow_horizontal = 2
+grow_vertical = 2
+autoplay = true
+expand = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="ActionButton" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.64246875
+anchor_top = 0.8332593
+anchor_right = 0.6518229
+anchor_bottom = 0.9583333
+offset_left = 199.45996
+offset_top = -47.920044
+offset_right = 447.5
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_ghts0")
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="CutscenePlayer" type="VideoStreamPlayer" parent="CanvasLayer2"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 113.0
+offset_top = -3.0
+offset_right = 113.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+expand = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAAAABYAAAAAAAAAADABABYAAAAAAAAAADACABYAAAAAAAAAADADABYAAAAAAAAAADAEABYAAAAAAAAAADAFABYAAAAAAAAAADAGABYAAAAAAAAAADAHABYAAAAAAAAAADAIABYAAAAAAAAAADAJABYAAAAAAAAAADAKABYAAAAAAAAAADALABYAAAAAAAAAADAMABYAAAAAAAAAADANABYAAAAAAAAAADAOABYAAAAAAAAAADAPABYAAAAAAAAAADAQABYAAAAAAAAAADARABYAAAAAAAAAADASABYAAAAAAAAAADATABYAAAAAAAAAADAUABYAAAAAAAAAADAVABYAAAAAAAAAADAWABYAAAAAAAAAADAXABYAAAAAAAAAADAYABYAAAAAAAAAADAZABYAAAAAAAAAADAaABYAAAAAAAAAADAbABYAAAAAAAAAADAcABYAAAAAAAAAADAdABYAAAAAAAAAADAeABYAAAAAAAAAADAfABYAAAAAAAAAADAgABYAAAAAAAAAADAhABYAAAAAAAAAADAiABYAAAAAAAAAADAjABYAAAAAAAAAADAkABYAAAAAAAAAADAlABYAAAAAAAAAADAmABYAAAAAAAAAADAnABYAAAAAAAAAADAoABYAAAAAAAAAADApABYAAAAAAAAAADAqABYAAAAAAAAAADArABYAAAAAAAAAADAsABYAAAAAAAAAADAtABYAAAAAAAAAADAuABYAAAAAAAAAADAvABYAAAAAAAAAADAwABYAAAAAAAAAADD2/xYAAAAAAAAAADD3/xYAAAAAAAAAADD4/xYAAAAAAAAAADD5/xYAAAAAAAAAADD6/xYAAAAAAAAAADD7/xYAAAAAAAAAADD8/xYAAAAAAAAAADD9/xYAAAAAAAAAADD+/xYAAAAAAAAAADD//xYAAAAAAAAAADA=")
+tile_set = SubResource("TileSet_hyk7l")
+
+[node name="playerv2" parent="." instance=ExtResource("1_ul346")]
+position = Vector2(418, 934)
+
+[node name="Camera2D" parent="playerv2" index="3"]
+enabled = false
+
+[node name="hud" parent="playerv2" index="4"]
+layer = 0
+visible = false
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_sa50h")
+autoplay = true
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(211, 549)
+shape = SubResource("RectangleShape2D_88dlf")
+
+[node name="Area2D2" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(1762, 546)
+shape = SubResource("RectangleShape2D_88dlf")
+
+[connection signal="pressed" from="CanvasLayer/ActionButton" to="." method="_on_action_button_pressed"]
+
+[editable path="playerv2"]

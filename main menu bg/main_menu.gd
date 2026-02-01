@@ -44,7 +44,7 @@ func _on_start_pressed() -> void:
 
 # Connect the 'finished' signal of cutscene_player to this function
 func _on_cutsceneplayer_finished() -> void:
-	get_tree().change_scene_to_file("res://scene/levelroot1.tscn")
+	get_tree().change_scene_to_file("res://scene/level_sedimentation.tscn")
 
 # --- UI Logic ---
 func _on_exit_pressed():
