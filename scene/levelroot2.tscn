@@ -52,8 +52,11 @@
 [ext_resource type="Texture2D" uid="uid://oewffwhb30js" path="res://images/asssets/tileset/tilesets/DAY - THORNS RIGHT.png" id="46_57wqx"]
 [ext_resource type="Texture2D" uid="uid://xux7a64pf6tq" path="res://images/asssets/tileset/tilesets/DAY - THORNS.png" id="47_rdvf7"]
 [ext_resource type="Texture2D" uid="uid://bkvji7ksfabpl" path="res://images/asssets/tileset/tilesets/DAY - TOTEM.png" id="48_1ao0t"]
-[ext_resource type="Script" uid="uid://56b1k8ss755a" path="res://area_2d3.gd" id="53_q2gmb"]
 [ext_resource type="PackedScene" uid="uid://cmgjnqyxeohjo" path="res://scene/playerv2.tscn" id="54_bdlb7"]
+[ext_resource type="Script" uid="uid://bdb1hvf2y1n30" path="res://scene/checkpoint.gd" id="54_rjs1b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryph7"]
+size = Vector2(70.333336, 109.000015)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5005l"]
 texture = ExtResource("2_ryph7")
@@ -577,21 +580,35 @@ sources/54 = SubResource("TileSetAtlasSource_pv5ap")
 sources/55 = SubResource("TileSetAtlasSource_vxkbn")
 sources/56 = SubResource("TileSetAtlasSource_8tdt8")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryph7"]
-size = Vector2(70.333336, 109.000015)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itsfq"]
+size = Vector2(57, 276)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bdlb7"]
-radius = 41.0
-height = 246.0
-
-[node name="Node2D" type="Node2D"]
-position = Vector2(513, 1942)
+[node name="levelroot 2" type="Node2D"]
+position = Vector2(586, 1956)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(2444.9998, 638.5)
 scale = Vector2(2.60625, 0.69907415)
 texture = ExtResource("1_bdlb7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-94, 828)
+scale = Vector2(3, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(80.333336, 7.3333435)
+shape = SubResource("RectangleShape2D_ryph7")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(2860, 826)
+scale = Vector2(3, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(80.333336, 7.3333435)
+shape = SubResource("RectangleShape2D_ryph7")
+debug_color = Color(0, 0.6, 0.69803923, 0)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 texture_filter = 1
@@ -600,29 +617,15 @@ scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAAABUAFgAAAAAAAAAGABUAFgAAAAAAAAAHABUAFgAAAAAAAAAIABUAFgAAAAAAAAAJABUAFgAAAAAAAAAMABUAFgAAAAAAAAAKABUAFgAAAAAAAAALABUAFgAAAAAAAAANABUAFgAAAAAAAAAQABUAFgAAAAAAAAAPABUAFgAAAAAAAAAOABUAFgAAAAAAAAARABUAFgAAAAAAAAASABUAFgAAAAAAAAATABUAFgAAAAAAAAAUABUAFgAAAAAAAAAYABUAFgAAAAAAAAAZABUAFgAAAAAAAAAaABUAFgAAAAAAAAAbABUAFgAAAAAAAAAcABUAFgAAAAAAAAAdABUAFgAAAAAAAAAeABUAFgAAAAAAAAAfABUAFgAAAAAAAAAgABUAFgAAAAAAAAAhABUAFgAAAAAAAAAlABUAFgAAAAAAAAAmABUAFgAAAAAAAAAnABUAFgAAAAAAAAD//xUAFgAAAAAAAAAWABMAFgAAAAAAAAAFABQAFgAAAAAAAAAEABMAFgAAAAAAAAADABIAFgAAAAAAAAAEABQAIgAAAAAAAAADABMAIgAAAAAAAAADABQAEwAAAAAAADAFABUAIgAAAAAAAAAEABUAEwAAAAAAAGACABMAFgAAAAAAAAABABQAFgAAAAAAAAABABUAEwAAAAAAAAACABQAEwAAAAAAAAACABUAEwAAAAAAAGADABUAEwAAAAAAAGAVABQAFgAAAAAAAAAVABUAEwAAAAAAAAAWABUAEwAAAAAAAFAXABQAFgAAAAAAAAAXABUAIgAAAAAAAAAWABQAIgAAAAAAADAiABUAFgAAAAAAAAAjABUAFgAAAAAAAAAkABUAFgAAAAAAAAAJABQAKAAAAAAAAAAGABQAMQABAAAAAAAPABQAMQAAAAAAAAAQABQAMQABAAAAAAAoABUAFgAAAAAAAAApABUAFgAAAAAAAAAsABUAFgAAAAAAAAAtABUAFgAAAAAAAAAuABUAFgAAAAAAAAAvABUAFgAAAAAAAAAwABUAEwAAAAAAAAAxABUAEwAAAAAAAAAyABUAIgAAAAAAAFAzABUAEwAAAAAAAAA0ABUAIgAAAAAAAAArABUAFgAAAAAAAAAqABUAFgAAAAAAAAA1ABUAIgAAAAAAAAA3ABUAIgAAAAAAAAA4ABUAFgAAAAAAAAA5ABUAFgAAAAAAAAA6ABUAFgAAAAAAAAA2ABUAIgAAAAAAAAA7ABUAFgAAAAAAAAA9ABUAFgAAAAAAAAA+ABUAFgAAAAAAAAA/ABUAFgAAAAAAAABAABUAFgAAAAAAAAA8ABUAFgAAAAAAAAA3ABQAGAAAAAAAAAAyABMAGAAAAAAAAAAzABMAGAAAAAAAAAAwABQAFwAAAAAAAAAxABQAEwAAAAAAAAA7ABQAKAAAAAAAAAAyABQAIgAAAAAAAAA0ABQAFgAAAAAAAAAzABQAEwAAAAAAAAA5ABQABwAAAAAAAAAvABQAMQABAAAAABAlABQAJwABAAMAAAAlABMAJwABAAIAAAAlABIAJwABAAEAAAAlABEAJwABAAAAAAAmABEAJwACAAAAAAAmABIAJwACAAEAAAAmABMAJwACAAIAAAAmABQAJwACAAMAAAAkABQAMQABAAAAABAkABMAJwAAAAIAAAAkABIAJwAAAAEAAAAkABEAJwAAAAAAAAACABIANQAAAAAAAAAFABMANQAAAAAAAABBABUAFgAAAAAAAABCABUAFgAAAAAAAABDABUAFgAAAAAAAABEABUAFgAAAAAAAAAsABQADgAAAAEAAAAtABQADgABAAEAAAAqABQACgAAAAAAAAAoABQACQAAAAAAAAApABQACAAAAAAAAAARABQANgAAAAAAAAAjABQANgAAAAAAAAAMABQANgAAAAAAAAA1ABQAFgAAAAAAAAA2ABQAFgAAAAAAAAA=")
 tile_set = SubResource("TileSet_52iyk")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="TileMapLayer"]
-position = Vector2(-31, 276)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayer/StaticBody2D"]
-position = Vector2(80.333336, 7.3333435)
-shape = SubResource("RectangleShape2D_ryph7")
-debug_color = Color(0, 0.6, 0.69803923, 0)
+[node name="playerv2" parent="." instance=ExtResource("54_bdlb7")]
+position = Vector2(2944, 858)
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("53_q2gmb")
+script = ExtResource("54_rjs1b")
+next_level_path = "uid://dxlcro070pii5"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(3069, 878)
-shape = SubResource("CapsuleShape2D_bdlb7")
-debug_color = Color(0.011764706, 0, 0, 0.043137256)
+position = Vector2(3016, 873)
+shape = SubResource("RectangleShape2D_itsfq")
 
-[node name="ColorRect" type="ColorRect" parent="Area2D/CollisionShape2D"]
-offset_left = -30.0
-offset_top = -115.0
-offset_right = 28.0
-offset_bottom = 121.0
-color = Color(0.99215686, 0.92941177, 0.9372549, 0)
-metadata/_edit_use_anchors_ = true
-
-[node name="playerv2" parent="." instance=ExtResource("54_bdlb7")]
-position = Vector2(276, 818)
+[connection signal="body_entered" from="Area2D" to="playerv2" method="_on_area_2d_body_entered"]

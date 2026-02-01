@@ -82,3 +82,7 @@ func _on_wind_button_pressed() -> void:
 		
 		if wind.has_method("set_direction"):
 			wind.set_direction(move_dir)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

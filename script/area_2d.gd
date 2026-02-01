@@ -7,6 +7,7 @@ func _ready():
 
 func _on_body_entered(body):
 	print("Body entered:", body.name)
-	if body.name == "player":
+	# Changed "player" to "playerv2" to match your scene tree
+	if body.name == "playerv2": 
 		print("Next level triggered!")
 		get_tree().change_scene_to_file(next_level_path)
