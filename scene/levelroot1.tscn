@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=4 uid="uid://bmcxuqgvudhyf"]
+[gd_scene load_steps=109 format=4 uid="uid://bmcxuqgvudhyf"]
 
 [ext_resource type="Texture2D" uid="uid://dalc1nogj8xhm" path="res://images/asssets/background/Level 2 Bg.png" id="1_0rkfc"]
 [ext_resource type="Texture2D" uid="uid://btdc0hujom2ru" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND CLIMB.jpg" id="1_m7qgi"]
@@ -566,9 +566,6 @@ sources/50 = SubResource("TileSetAtlasSource_y1w3o")
 radius = 41.0
 height = 246.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p5n1"]
-size = Vector2(97, 192.5)
-
 [node name="levelroot" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -589,17 +586,11 @@ script = ExtResource("18_ysguc")
 position = Vector2(3628, 934)
 shape = SubResource("CapsuleShape2D_0yq6r")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-31, 276)
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(6, 961.25)
-shape = SubResource("RectangleShape2D_3p5n1")
-
 [node name="wall" parent="." instance=ExtResource("62_gg4qu")]
 position = Vector2(3708, 589)
+
+[node name="wall2" parent="." instance=ExtResource("62_gg4qu")]
+position = Vector2(7, 593)
 
 [node name="playerv2" parent="." instance=ExtResource("54_yitjf")]
 position = Vector2(75, 916)

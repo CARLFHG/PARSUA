@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_wave_button_pressed() -> void:
 	if wave_scene:
-		if wave_sfx: wave_sfx.play() # Play sfx if it exists
+		# REMOVED: if wave_sfx: wave_sfx.play() 
 		var wave = wave_scene.instantiate()
 		get_tree().current_scene.add_child(wave)
 		
@@ -63,7 +63,7 @@ func _on_wave_button_pressed() -> void:
 
 func _on_wind_button_pressed() -> void:
 	if wind_scene:
-		if wind_sfx: wind_sfx.play()
+		# REMOVED: if wind_sfx: wind_sfx.play()
 		var wind = wind_scene.instantiate()
 		get_tree().current_scene.add_child(wind)
 		
