@@ -22,7 +22,7 @@ func _process(delta):
 		global_position = get_global_mouse_position()
 		
 		# PLAY SOUND IMMEDIATELY WHEN DRAGGING
-		if not action_sound.playing:
+		if action_sound and not action_sound.playing:
 			action_sound.play()
 		
 		# Handle the Video Player
@@ -39,7 +39,7 @@ func _process(delta):
 			deal_damage()
 			damage_timer = damage_cooldown
 	else:
-		# STOP ALL SOUNDS AND VIDEO ON RELEASE
+		# STOP ONLY SPRAY SFX AND VIDEO ON RELEASE
 		stop_all_sounds() 
 		if $VideoStreamPlayer.is_playing():
 			$VideoStreamPlayer.stop()
@@ -50,19 +50,23 @@ func apply_damage_logic():
 	var targets = get_overlapping_areas()
 	# Only manage the rock's internal hitsound here
 	if targets.size() == 0:
-		# Use Scene Tree to find the rock and stop its specific sound
 		var rock = get_tree().current_scene.find_child("rock", true, false)
 		if rock and rock.has_node("hitsound"):
-			rock.get_node("hitsound").stop()
+			var hs = rock.get_node("hitsound")
+			if hs.playing:
+				hs.stop()
 
 func stop_all_sounds():
-	if action_sound.playing:
+	# 1. Only stop the specific sound attached to THIS agent
+	if action_sound and action_sound.playing:
 		action_sound.stop()
-	# Stop the rock's sound specifically
+	
+	# 2. Use a safer way to find and stop the rock sound
 	var rock = get_tree().current_scene.find_child("rock", true, false)
-	if rock and rock.has_node("hitsound"):
-		rock.get_node("hitsound").stop()
-
+	if rock:
+		var hs = rock.get_node_or_null("hitsound")
+		if hs and hs is AudioStreamPlayer2D and hs.playing:
+			hs.stop()
 func deal_damage():
 	var targets = get_overlapping_areas()
 	for area in targets:
@@ -72,20 +76,24 @@ func deal_damage():
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			if "levelroot 4" not in get_parent().name: 
+			# Added "levelroot2" and "levelroot4" to the list of 'dragging only' levels
+			if "levelroot2" in get_parent().name or "levelroot4" in get_parent().name:
+				dragging = true
+			else:
+				# This part spawns the clones - only for level 1
 				var spray_scene = load("res://scene/spray_agent.tscn")
 				var world_spray = spray_scene.instantiate()
 				world_spray.dragging = true
 				get_tree().current_scene.add_child(world_spray)
 				world_spray.global_position = get_global_mouse_position()
-			else:
-				dragging = true
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		# FIXED INDENTATION: Must be pushed right with a TAB
 		if not event.pressed and dragging:
-			stop_all_sounds() 
+			stop_all_sounds()
 			dragging = false
-			if "levelroot 4" not in get_parent().name:
-				queue_free()
+			# If we are in level 2 or 4, DO NOT delete the can (queue_free)
+			if "levelroot2" in get_parent().name or "levelroot4" in get_parent().name:
+				position = original_pos # Snap back to the UI shelf
+			else:
+				queue_free() # Only delete clones in level 1

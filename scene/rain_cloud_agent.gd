@@ -12,6 +12,7 @@ var original_pos := Vector2.ZERO
 func _ready():
 	original_pos = position
 	$AnimatedSprite2D.play("idle")
+	
 	# Snap to mouse immediately if spawned as a clone
 	if dragging:
 		global_position = get_global_mouse_position()
@@ -21,13 +22,13 @@ func _process(delta):
 		global_position = get_global_mouse_position()
 		
 		# PLAY SOUND IMMEDIATELY WHEN DRAGGING
-		if not action_sound.playing:
+		if action_sound and not action_sound.playing:
 			action_sound.play()
 		
 		if $AnimatedSprite2D.animation != "raining":
 			$AnimatedSprite2D.play("raining")
 		
-		# Handle rock sound reset if moving away
+		# Logic to handle rock hitsound reset
 		apply_damage_logic()
 		
 		damage_timer -= delta
@@ -35,27 +36,32 @@ func _process(delta):
 			apply_rain_damage()
 			damage_timer = damage_cooldown
 	else:
-		# STOP SOUND WHEN RELEASED
+		# STOP ONLY CLOUD SFX ON RELEASE
 		stop_all_sounds() 
 		position = original_pos
 		$AnimatedSprite2D.play("idle")
 
 func apply_damage_logic():
 	var targets = get_overlapping_areas()
-	# If we are dragging but NOT over the rock, stop the rock's hitsound
+	# Stop the rock's sound if we move the cloud away while dragging
 	if targets.size() == 0:
-		# We use the Scene Tree to find the rock and stop its sound
 		var rock = get_tree().current_scene.find_child("rock", true, false)
 		if rock and rock.has_node("hitsound"):
-			rock.get_node("hitsound").stop()
+			var hs = rock.get_node("hitsound")
+			if hs.playing:
+				hs.stop()
 
 func stop_all_sounds():
-	if action_sound.playing:
+	# 1. Only stop the specific sound attached to THIS agent
+	if action_sound and action_sound.playing:
 		action_sound.stop()
-	# Force rock sound to stop
+	
+	# 2. Use a safer way to find and stop the rock sound
 	var rock = get_tree().current_scene.find_child("rock", true, false)
-	if rock and rock.has_node("hitsound"):
-		rock.get_node("hitsound").stop()
+	if rock:
+		var hs = rock.get_node_or_null("hitsound")
+		if hs and hs is AudioStreamPlayer2D and hs.playing:
+			hs.stop()
 
 func apply_rain_damage():
 	var targets = get_overlapping_areas()
@@ -67,6 +73,7 @@ func apply_rain_damage():
 func _on_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
+			# Logic for cloning or dragging depending on level
 			if "levelroot 4" not in get_parent().name:
 				var cloud_scene = load("res://scene/rain_cloud_agent.tscn")
 				var world_cloud = cloud_scene.instantiate()
@@ -78,7 +85,7 @@ func _on_input_event(_viewport, event, _shape_idx):
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		# FIXED INDENTATION: These lines must be pushed right with a TAB
+		# FIXED INDENTATION: Corrected the parser error seen in your screenshot
 		if not event.pressed and dragging:
 			stop_all_sounds()
 			dragging = false

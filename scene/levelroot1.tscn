@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=4 uid="uid://bmcxuqgvudhyf"]
+[gd_scene load_steps=110 format=4 uid="uid://bmcxuqgvudhyf"]
 
 [ext_resource type="Texture2D" uid="uid://dalc1nogj8xhm" path="res://images/asssets/background/Level 2 Bg.png" id="1_0rkfc"]
 [ext_resource type="Texture2D" uid="uid://btdc0hujom2ru" path="res://images/asssets/tileset/tilesets/AFTERNOON - GROUND CLIMB.jpg" id="1_m7qgi"]
@@ -54,6 +54,7 @@
 [ext_resource type="Texture2D" uid="uid://xux7a64pf6tq" path="res://images/asssets/tileset/tilesets/DAY - THORNS.png" id="45_psi6v"]
 [ext_resource type="Texture2D" uid="uid://bkvji7ksfabpl" path="res://images/asssets/tileset/tilesets/DAY - TOTEM.png" id="47_xannh"]
 [ext_resource type="PackedScene" uid="uid://cmgjnqyxeohjo" path="res://scene/playerv2.tscn" id="54_yitjf"]
+[ext_resource type="AudioStream" uid="uid://dbgqw1037krwu" path="res://main menu bg/RPReplay_Final1769612477.mp3" id="56_cp5kk"]
 [ext_resource type="PackedScene" uid="uid://d14arf05yhl8x" path="res://scene/wall.tscn" id="62_gg4qu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mcna4"]
@@ -595,3 +596,9 @@ position = Vector2(7, 593)
 
 [node name="playerv2" parent="." instance=ExtResource("54_yitjf")]
 position = Vector2(22, 914.00006)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("56_cp5kk")
+volume_db = 10.097
+autoplay = true
+bus = &"music"
